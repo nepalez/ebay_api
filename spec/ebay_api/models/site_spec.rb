@@ -18,7 +18,7 @@ RSpec.describe EbayApi::Site do
     let(:id) { 500 }
 
     it "raises ArgumentError" do
-      expect { subject }.to raise_error ArgumentError
+      expect { subject }.to raise_error(ArgumentError, /500/)
     end
   end
 end

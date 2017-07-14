@@ -22,8 +22,10 @@ class EbayApi
   require_relative "ebay_api/models/version"
   require_relative "ebay_api/models/charset"
   require_relative "ebay_api/models/site"
+  require_relative "ebay_api/models/language"
 
   require_relative "ebay_api/exceptions/unknown_api_error"
   require_relative "ebay_api/exceptions/version_number_error"
   require_relative "ebay_api/exceptions/unknown_site_error"
+  require_relative "ebay_api/exceptions/unknown_language_error"
 end

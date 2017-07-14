@@ -24,7 +24,7 @@ RSpec.describe EbayApi::Version do
     let(:number) { "0.1.0" }
 
     it "raises" do
-      expect { subject }.to raise_error ArgumentError
+      expect { subject }.to raise_error(ArgumentError, /0\.1\.0/)
     end
   end
 
@@ -32,7 +32,7 @@ RSpec.describe EbayApi::Version do
     let(:name) { :hacking }
 
     it "raises" do
-      expect { subject }.to raise_error ArgumentError
+      expect { subject }.to raise_error(ArgumentError, /sell\.hacking/)
     end
   end
 end
