@@ -1,4 +1,5 @@
 require "evil/client"
+require "yaml"
 
 #
 # Ruby client to Ebay RESTful JSON API
@@ -20,7 +21,9 @@ class EbayApi
 
   require_relative "ebay_api/models/version"
   require_relative "ebay_api/models/charset"
+  require_relative "ebay_api/models/site"
 
   require_relative "ebay_api/exceptions/unknown_api_error"
   require_relative "ebay_api/exceptions/version_number_error"
+  require_relative "ebay_api/exceptions/unknown_site_error"
 end

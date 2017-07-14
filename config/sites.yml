@@ -1,0 +1,155 @@
+#
+# List of eBay sites (marketplaces) with all site-specific settings
+# @see
+#   http://developer.ebay.com/Devzone/rest/ebay-rest/content/rest-request-components.html#Marketpl
+#
+# Some parameters of the marketplace are inherited from
+# the traditional Selling APIs (XML-based)
+# @see
+#   https://developer.ebay.com/Devzone/XML/docs/Reference/eBay/types/SiteCodeType.html
+#
+---
+- id: 0
+  code: EBAY-US
+  country: US
+  currencies: [USD]
+  host: www.ebay.com
+  languages: [en-US, pt-BR, es-CO]
+- id: 2
+  code: EBAY-CA
+  country: CA
+  currencies: [CAD, USD]
+  host: www.ebay.ca
+  languages: [en-CA]
+- id: 3
+  code: EBAY-GB
+  country: GB
+  currencies: [GBP]
+  host: www.ebay.co.uk
+  languages: [en-GB]
+- id: 15
+  code: EBAY-AU
+  country: Australia
+  currencies: [AUD]
+  host: www.ebay.com.au
+  languages: [en-AU]
+- id: 16
+  code: EBAY-AT
+  country: AT
+  currencies: [EUR]
+  host: www.ebay.at
+  languages: [de-AT]
+- id: 23
+  code: EBAY-BE
+  country: BE
+  currencies: [EUR]
+  host: www.ebay.be
+  languages: [fr-BE]
+- id: 71
+  code: EBAY-FR
+  country: FR
+  currencies: [EUR]
+  host: www.ebay.fr
+  languages: [fr-FR]
+- id: 77
+  code: EBAY-DE
+  country: DE
+  currencies: [EUR]
+  host: www.ebay.de
+  languages: [de-DE]
+- id: 100
+  code: EBAY-US.MOTORS
+  country: US
+  currencies: [USD]
+  host: www.ebay.com/motors
+  languages: [en-US]
+- id: 101
+  code: EBAY-IT
+  country: IT
+  currencies: [EUR]
+  host: www.ebay.it
+  languages: [it-IT]
+- id: 123
+  code: EBAY-BE
+  country: BE
+  currencies: [EUR]
+  host: www.ebay.be
+  languages: [nl-BE]
+- id: 146
+  code: EBAY-NL
+  country: NL
+  currencies: [EUR]
+  host: www.ebay.nl
+  languages: [nl-NL]
+- id: 186
+  code: EBAY-ES
+  country: ES
+  languages: [es-ES]
+  currencies: [EUR]
+  host: www.ebay.es
+- id: 193
+  code: EBAY-CH
+  country: CH
+  currencies: [CHF]
+  host: www.ebay.ch
+  languages: [de-CH]
+- id: 201
+  code: EBAY-HK
+  country: HK
+  currencies: [HKD]
+  host: www.ebay.com.hk
+  languages: [zh-HK]
+- id: 203
+  code: EBAY-IN
+  country: IN
+  currencies: [INR]
+  host: www.ebay.in
+  languages: [en-IN]
+- id: 205
+  code: EBAY-IE
+  country: IE
+  currencies: [EUR]
+  host: www.ebay.ie
+  languages: [en-IE]
+- id: 207
+  code: EBAY-MY
+  country: MY
+  currencies: [MYR]
+  host: www.ebay.com.my
+  languages: [en-MY]
+- id: 210
+  code: EBAY-CA
+  country: CA
+  currencies: [CAD, USD]
+  host: www.ebay.ca
+  languages: [fr-CA]
+- id: 211
+  code: EBAY-PH
+  country: PH
+  currencies: [PHP]
+  host: www.ebay.ph
+  languages: [en-PH]
+- id: 212
+  code: EBAY-PL
+  country: PL
+  currencies: [PLN]
+  host: www.ebay.pl
+  languages: [pl-PL]
+- id: 215
+  code: EBAY-US
+  country: US
+  currencies: [RUB]
+  host: www.ebay.com
+  languages: [ru-RU]
+- id: 216
+  code: EBAY-SG
+  country: SG
+  currencies: [SGD]
+  host: www.ebay.com.sg
+  languages: [en-SG]
+- id:
+  code: EBAY-CN
+  country: China
+  currencies: [CNY]
+  host:
+  languages: [zh-HK]

@@ -12,23 +12,29 @@ Metrics/LineLength:
     - http
     - https
   
-Style/Lambda:
-  Enabled: false
-
-Style/StringLiterals:
-  EnforcedStyle: double_quotes
-
-Style/FrozenStringLiteralComment:
+Style/ClassAndModuleChildren:
   Enabled: false
 
 Style/Documentation:
   Enabled: false
 
-Style/ClassAndModuleChildren:
+Style/DoubleNegation:
+  Enabled: false # by intention
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/Lambda:
+  Enabled: false
+
+Style/PercentLiteralDelimiters:
+  Enabled: false
+
+Style/RaiseArgs:
   Enabled: false
 
 Style/SpaceInLambdaLiteral:
   Enabled: false
 
-Style/PercentLiteralDelimiters:
-  Enabled: false
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
