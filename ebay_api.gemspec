@@ -1,5 +1,5 @@
 Gem::Specification.new do |gem|
-  gem.name     = "sms_aero"
+  gem.name     = "ebay_api"
   gem.version  = "0.0.1"
   gem.author   = "Andrew Kozin (nepalez)"
   gem.email    = "andrew.kozin@gmail.com"
@@ -13,7 +13,7 @@ Gem::Specification.new do |gem|
 
   gem.required_ruby_version = ">= 2.2"
 
-  gem.add_runtime_dependency "evil-client", "~> 0.3.2"
+  gem.add_runtime_dependency "evil-client", "~> 0.3.3"
 
   gem.add_development_dependency "rake", ">= 10"
   gem.add_development_dependency "rspec", "~> 3.0"
