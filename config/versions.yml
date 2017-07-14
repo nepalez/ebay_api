@@ -1,0 +1,36 @@
+#
+# The list of supported versions of API with version-specific settings.
+#
+# When API team releases new version of some API, you should
+# register the version number with all the necessary settings
+# to specify differencies between versions.
+#
+# Don't forget to reflect new settings in [EbayApi::Version] model
+# (defined at lib/ebay_api/version.rb).
+#
+# Notice, that [EbayApi::Version] applies settings from previous version
+# to the next version(s) authomatically; here you must define differencies only.
+#
+---
+sell:
+  account:
+    - number: 1.1.0
+  analytics:
+    - number: 1.0.0
+  fullfillemt:
+    - number: 1.2.0
+  inventory:
+    - number: 1.1.0
+  marketing:
+    - number: 1.3.0
+  metadata:
+    - number: 1.1.0
+buy:
+  marketing:
+    - number: 1_beta.0.0
+  browse:
+    - number: 1_beta.7.0
+  feed:
+    - number: 1_beta.0.0
+  order:
+    - number: 1_beta.7.0

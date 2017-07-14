@@ -6,6 +6,7 @@ end
 
 require "ebay_api"
 require "webmock/rspec"
+require "rspec/its"
 
 require_relative "support/fixtures_helper"
 
