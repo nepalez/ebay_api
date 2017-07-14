@@ -19,6 +19,7 @@ class EbayApi
   extend Evil::Client::DSL
 
   require_relative "ebay_api/models/version"
+  require_relative "ebay_api/models/charset"
 
   require_relative "ebay_api/exceptions/unknown_api_error"
   require_relative "ebay_api/exceptions/version_number_error"
