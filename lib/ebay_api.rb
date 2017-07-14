@@ -28,4 +28,18 @@ class EbayApi
   require_relative "ebay_api/exceptions/version_number_error"
   require_relative "ebay_api/exceptions/unknown_site_error"
   require_relative "ebay_api/exceptions/unknown_language_error"
+
+  BOOLEAN = proc { |v| !!v }
+  settings do
+    option :token,       proc(&:to_s)
+    option :site_id,     Site,     optional: true, as: :site
+    option :language,    Language, optional: true
+    option :charset,     Charset,  default: proc { Charset["utf-8"] }
+    option :sandbox,     BOOLEAN,  default: proc { false }
+    option :accept_gzip, BOOLEAN,  default: proc { false }
+  end
+
+  base_url do |settings|
+    "https://api#{".sandbox" if settings.sandbox}.ebay.com/"
+  end
 end
