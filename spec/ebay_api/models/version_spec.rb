@@ -1,5 +1,3 @@
-require "spec_helper"
-
 RSpec.describe EbayApi::Version do
   subject(:version) { described_class[group, name, number] }
 

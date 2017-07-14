@@ -1,5 +1,3 @@
-require "spec_helper"
-
 RSpec.describe EbayApi::Site do
   subject(:version) { described_class[id] }
 

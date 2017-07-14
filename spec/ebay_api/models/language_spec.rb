@@ -1,5 +1,3 @@
-require "spec_helper"
-
 RSpec.describe EbayApi::Language do
   subject(:language) { described_class[key] }
 
