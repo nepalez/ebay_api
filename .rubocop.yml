@@ -12,6 +12,9 @@ Metrics/LineLength:
     - http
     - https
   
+Style/CaseEquality:
+  Enabled: false
+
 Style/ClassAndModuleChildren:
   Enabled: false
 

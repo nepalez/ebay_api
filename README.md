@@ -1,4 +1,4 @@
-# [WIP] EbayApi
+# [WIP] EbayAPI
 
 Ruby client to eBay RESTful JSON API
 

@@ -1,0 +1,76 @@
+#
+# List of eBay sites in a traditional XML API
+#
+---
+0:
+  :currencies: [USD]
+  :languages:  [en-US]
+2:
+  :currencies: [USD, CAD]
+  :languages:  [en-CA]
+3:
+  :currencies: [GBP]
+  :languages:  [en-GB]
+15:
+  :currencies: [AUD]
+  :languages:  [en-AU]
+16:
+  :currencies: [EUR]
+  :languages:  [de-AT]
+23:
+  :currencies: [EUR]
+  :languages:  [fr-BE]
+71:
+  :currencies: [EUR]
+  :languages:  [fr-FR]
+77:
+  :currencies: [EUR]
+  :languages:  [de-DE]
+100:
+  :currencies: [USD]
+  :languages:  [en-US]
+101:
+  :currencies: [EUR]
+  :languages:  [it-IT]
+123:
+  :currencies: [EUR]
+  :languages:  [nl-BE]
+146:
+  :currencies: [EUR]
+  :languages:  [nl-NL]
+186:
+  :currencies: [EUR]
+  :languages:  [es-ES]
+193:
+  :currencies: [CHF]
+  :languages:  [de-CH]
+201:
+  :currencies: [HKD]
+  :languages:  [zh-HK]
+203:
+  :currencies: [INR]
+  :languages:  [en-IN]
+205:
+  :currencies: [EUR]
+  :languages:  [en-IE]
+207:
+  :currencies: [MYR]
+  :languages:  [en-MY]
+210:
+  :currencies: [USD, CAD]
+  :languages:  [fr-CA]
+211:
+  :currencies: [PHP]
+  :languages:  [en-PH]
+212:
+  :currencies: [PLN]
+  :languages:  [pl-PL]
+215:
+  :currencies: [RUB]
+  :languages:  [ru-RU]
+216:
+  :currencies: [SGD]
+  :languages:  [en-SG]
+223:
+  :currencies: [CNY]
+  :languages:  [zh-CN]
