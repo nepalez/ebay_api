@@ -1,6 +1,6 @@
 RSpec.describe EbayAPI::Version do
-  describe "#call, #[]" do
-    subject(:version) { described_class[group, name, number] }
+  describe "#call" do
+    subject(:version) { described_class.call(group, name, number) }
 
     let(:group)  { :sell }
     let(:name)   { :inventory }
@@ -33,6 +33,19 @@ RSpec.describe EbayAPI::Version do
         expect { subject }
           .to raise_error(RuntimeError, /Sell Hacking API v1\.1\.0/)
       end
+    end
+  end
+
+  describe "#[]" do
+    subject(:builder) { described_class[group, name] }
+    let(:group)  { :sell }
+    let(:name)   { :inventory }
+    let(:number) { "1.1.0" }
+
+    it "provides version builder by number" do
+      expect(subject).to be_a Proc
+      expect(subject.call(number))
+        .to eq described_class.call(group, name, number)
     end
   end
 

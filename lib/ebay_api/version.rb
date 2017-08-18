@@ -67,6 +67,14 @@ class EbayAPI
         find { |item| item == version } ||
           raise("#{version} not supported by EbayAPI")
       end
+
+      # Curries arguments of the call
+      # @param  [#to_s] group
+      # @param  [#to_s] name
+      # @return [Proc] a proc to build version by number
+      def [](group, name)
+        ->(number) { call(group, name, number) }
+      end
     end
   end
 end

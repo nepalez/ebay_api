@@ -1,0 +1,29 @@
+---
+en:
+  evil:
+    client:
+      errors:
+        ebay_api:
+          language_supported: The language %{language} not supported on the %{site} marketplace
+      sites:
+        'EBAY-AT':        'Austrian'
+        'EBAY-AU':        'Australian'
+        'EBAY-BE':        'Belgian'
+        'EBAY-CA':        'Canadian'
+        'EBAY-CH':        'Czech'
+        'EBAY-CN':        'Chinese'
+        'EBAY-DE':        'German'
+        'EBAY-ES':        'Spanish'
+        'EBAY-FR':        'French'
+        'EBAY-GB':        'British'
+        'EBAY-HK':        'Hong Kong'
+        'EBAY-IE':        'Irish'
+        'EBAY-IN':        'Indian'
+        'EBAY-IT':        'Italian'
+        'EBAY-MY':        'Malaysian'
+        'EBAY-NL':        'Dutch'
+        'EBAY-PH':        'Philippine'
+        'EBAY-PL':        'Polish'
+        'EBAY-SG':        'Singapore'
+        'EBAY-US':        'American'
+        'EBAY-US.MOTORS': 'Motors'

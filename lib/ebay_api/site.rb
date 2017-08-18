@@ -9,6 +9,11 @@ class EbayAPI
     option :languages,  ->(v) { Array(v).uniq.map { |rec| Language.new(rec) } }
     option :host,       proc(&:to_s)
 
+    # Representation of the site
+    def to_s
+      I18n.t(code, scope: %i[evil client sites])
+    end
+
     # Compares a site to another one by its id
     # @param  [Object] other
     # @return [Boolean]

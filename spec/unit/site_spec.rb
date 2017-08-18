@@ -57,6 +57,14 @@ RSpec.describe EbayAPI::Site do
     end
   end
 
+  describe "#to_str" do
+    subject { "#{described_class[2]}" }
+
+    it "returns the code" do
+      expect(subject).to eq "Canadian"
+    end
+  end
+
   describe ".all" do
     subject { described_class.all.uniq }
 
