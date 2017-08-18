@@ -1,4 +1,4 @@
-RSpec.describe EbayApi::Charset do
+RSpec.describe EbayAPI::Charset do
   subject(:version) { described_class[value] }
   let(:value) { "UTF-8" }
 

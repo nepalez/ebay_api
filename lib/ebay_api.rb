@@ -18,6 +18,7 @@ require "yaml"
 #
 class EbayAPI < Evil::Client
   require_relative "ebay_api/collection"
+  require_relative "ebay_api/charset"
   require_relative "ebay_api/version"
   require_relative "ebay_api/site"
   require_relative "ebay_api/currency"
