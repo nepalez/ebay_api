@@ -1,4 +1,4 @@
-RSpec.describe EbayAPI, "instantiation" do
+RSpec.describe EbayAPI, "root scope" do
   subject(:client) { described_class.new(params) }
   let(:settings)   { client.settings }
 

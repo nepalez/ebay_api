@@ -7,23 +7,20 @@ require "yaml"
 # @see http://developer.ebay.com/Devzone/rest/ebay-rest/content/ebay-rest-landing.html
 #
 # @example
-#   client = EbayAPI.new token:       "foobar",
-#                        version:     "1.1.0",
-#                        language:    "en-US",
-#                        site_id:     0,
-#                        accept_gzip: true,
-#                        sandbox:     true
+#   client = EbayAPI.new token:    "foobar",
+#                        version:  "1.1.0",
+#                        language: "en-US",
+#                        site_id:  0,
+#                        gzip:     true,
+#                        sandbox:  true
 #
 #   client.inventory.
 #
 class EbayAPI < Evil::Client
-  require_relative "ebay_api/collection"
-  require_relative "ebay_api/charset"
-  require_relative "ebay_api/version"
-  require_relative "ebay_api/site"
-  require_relative "ebay_api/currency"
-  require_relative "ebay_api/language"
+  require_relative "ebay_api/models"
+  require_relative "ebay_api/operations"
 
+  # Root scope definitions
   option :token,    proc(&:to_s)
   option :site,     Site,            optional: true
   option :language, Language,        optional: true
