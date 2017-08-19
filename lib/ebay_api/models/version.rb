@@ -62,18 +62,18 @@ class EbayAPI
       # @param  [#to_s] number
       # @return [EbayAPI::Site] if version supported
       # @raise  [StandardError] if version not supported
-      def call(*args)
-        version = new(*args)
+      def call(group, name, number)
+        version = new(group, name, number)
         find { |item| item == version } ||
           raise("#{version} not supported by EbayAPI")
       end
 
-      # Curries arguments of the call
-      # @param  [#to_s] group
-      # @param  [#to_s] name
-      # @return [Proc] a proc to build version by number
-      def [](group, name)
-        ->(number) { call(group, name, number) }
+      # Curried version of the call
+      # @param  (see #call)
+      # @return (see #call)
+      # @raise  (see #call)
+      def [](*args)
+        method(:call).curry(3)[*args]
       end
     end
   end
