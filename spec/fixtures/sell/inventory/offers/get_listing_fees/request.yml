@@ -1,0 +1,5 @@
+# https://developer.ebay.com/api-docs/sell/inventory/resources/offer/methods/getListingFees#Input
+---
+offers:
+  - offerId: "36445435465"
+  - offerId: "36445435466"

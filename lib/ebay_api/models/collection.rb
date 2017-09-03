@@ -9,13 +9,5 @@ class EbayAPI
     def each
       block_given? ? all.each { |item| yield(item) } : all.to_enum
     end
-
-    def call(*)
-      raise NotImplementedError
-    end
-
-    def [](*args)
-      call(*args)
-    end
   end
 end

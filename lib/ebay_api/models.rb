@@ -1,3 +1,4 @@
+require_relative "models/callable"
 require_relative "models/collection"
 require_relative "models/charset"
 require_relative "models/version"

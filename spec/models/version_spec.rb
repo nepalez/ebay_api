@@ -6,10 +6,20 @@ RSpec.describe EbayAPI::Version do
     let(:name)   { :inventory }
     let(:number) { "1.1.0" }
 
-    context "when version is supported" do
-      its(:group)  { is_expected.to eq "sell" }
-      its(:name)   { is_expected.to eq "inventory" }
-      its(:number) { is_expected.to eq "1.1.0" }
+    it "returns existing version" do
+      expect(subject.group).to  eq "sell"
+      expect(subject.name).to   eq "inventory"
+      expect(subject.number).to eq "1.1.0"
+    end
+
+    context "with nil" do
+      let(:number) { nil }
+
+      it "returns the last version" do
+        expect(subject.group).to  eq "sell"
+        expect(subject.name).to   eq "inventory"
+        expect(subject.number).to eq "1.1.0"
+      end
     end
 
     context "when version number is not set" do
@@ -58,7 +68,7 @@ RSpec.describe EbayAPI::Version do
     let(:f) { described_class.new "sell", "account", "1.2.0" }
     let(:g) { described_class.new "sell", "account", "2.0.0" }
     let(:h) { described_class.new "sell", "inventory", "2.0.0" }
-  
+
     let(:unordered_list) { [b, d, c, a, f, e, g] }
     let(:ordered_list)   { [a, b, c, d, e, f, g] }
 

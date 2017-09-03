@@ -18,9 +18,7 @@ require "yaml"
 #
 class EbayAPI < Evil::Client
   require_relative "ebay_api/models"
-  require_relative "ebay_api/operations"
 
-  # Root scope definitions
   option :token,    proc(&:to_s)
   option :site,     Site,            optional: true
   option :language, Language,        optional: true
@@ -28,12 +26,15 @@ class EbayAPI < Evil::Client
   option :sandbox,  true.method(:&), default:  proc { false }
   option :gzip,     true.method(:&), default:  proc { false }
 
-  validate :language_supported do
-    !language || !site || site.languages.include?(language)
+  validate do
+    return unless language && site
+    return if site.languages.include?(language)
+    errors.add :wrong_language, language: language, site: site
   end
 
+  format   "json"
   path     { "https://api#{".sandbox" if sandbox}.ebay.com/" }
-  security { token_auth settings.token, prefix: "Bearer" }
+  security { token_auth token, prefix: "Bearer" }
   headers do
     {
       "Accept-Language":  language,
@@ -42,4 +43,6 @@ class EbayAPI < Evil::Client
       "X-Ruby-Framework": "https://github.com/evilmartians/evil-client"
     }
   end
+
+  require_relative "ebay_api/operations"
 end

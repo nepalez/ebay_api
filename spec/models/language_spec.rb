@@ -14,6 +14,11 @@ RSpec.describe EbayAPI::Language do
         expect { subject }.to raise_error(StandardError, /zh-RU/)
       end
     end
+
+    context "initialized language" do
+      let(:key) { described_class["zh-HK"] }
+      it { is_expected.to eql key }
+    end
   end
 
   describe ".all" do

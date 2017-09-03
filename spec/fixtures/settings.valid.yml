@@ -1,0 +1,6 @@
+# list of valid settings for a client
+---
+:token: foobarbaz
+:site: EBAY-US
+:language: en-US
+:charset: utf-8

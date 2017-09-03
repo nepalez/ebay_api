@@ -1,11 +1,12 @@
 class EbayAPI
   class Charset < String
-    class << self
-      def call(value)
-        charset = Encoding.find(value).to_s.downcase
-        charset ? new(charset) : raise("Invalid charset #{value}")
-      end
-      alias [] call
+    extend Callable
+
+    private
+
+    def initialize(value)
+      charset = Encoding.find(value).to_s.downcase
+      charset ? super(charset) : raise("Invalid charset #{value}")
     end
   end
 end

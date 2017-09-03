@@ -5,9 +5,9 @@ class EbayAPI
     option :id,         optional: true
     option :code,       proc(&:to_s)
     option :country,    proc(&:to_s)
+    option :host,       proc(&:to_s)
     option :currencies, ->(v) { Array(v).uniq.map { |rec| Currency.new(rec) } }
     option :languages,  ->(v) { Array(v).uniq.map { |rec| Language.new(rec) } }
-    option :host,       proc(&:to_s)
 
     # Representation of the site
     def to_s
@@ -23,27 +23,27 @@ class EbayAPI
 
     # @return [Hash<Symbol, Object>]
     def options
-      @__options__
+      @options ||= self.class.dry_initializer.attributes(self)
+    end
+
+    # @param  [EbayAPI::Site]
+    # @return [EbayAPI::Site]
+    def merge(other)
+      self.class.new code:       code,
+                     country:    country,
+                     host:       host,
+                     currencies: currencies | other.currencies,
+                     languages:  languages  | other.languages
     end
 
     # Enumberable collection of the eBay marketplaces
     class << self
       include Collection
+      include Callable
 
       # @return [Array<EbayAPI::Site>] list of supported sites
       def all
-        @all ||= begin
-          old_data = YAML.load_file("config/old_sites.yml")
-          YAML.load_file("config/sites.yml").flat_map do |item|
-            default = { currencies: [], languages: [] }
-            item[:ids].map do |id|
-              obj = old_data[id]
-              default[:currencies].concat obj[:currencies]
-              default[:languages].concat  obj[:languages]
-              new id: id, **item.merge(obj)
-            end << new(item.merge(default))
-          end
-        end
+        @all ||= YAML.load_file("config/sites.yml").map { |item| new(item) }
       end
 
       # Finds a site by either its id, or code
@@ -51,10 +51,16 @@ class EbayAPI
       # @return [EbayAPI::Site] if site supported
       # @raise  [StandardError] if site not supported
       def call(value)
-        find do |site|
-          (Integer === value)  && (site.id == value) ||
-          (site.code == value) && (site.id.nil?)
-        end || raise("Site #{value} not supported by eBay API")
+        return value if value.instance_of?(self)
+        value = value.to_s.gsub("_", "-")
+
+        site = if value[/^\d+$/]
+                 find { |item| item.id.to_s == value }
+               else
+                 select { |item| item.code == value }.inject(:merge)
+               end
+
+        site || raise("Site #{value} not supported by eBay API")
       end
 
       # @return [Array<EbayApi::Language>] list of supported languages

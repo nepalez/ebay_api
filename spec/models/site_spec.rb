@@ -14,7 +14,7 @@ RSpec.describe EbayAPI::Site do
 
     context "by known id" do
       let(:id) { 2 }
-      
+
       it "return a proper site" do
         expect(subject.options).to eq options.merge(id: 2, languages: ["en-CA"])
       end
@@ -22,7 +22,7 @@ RSpec.describe EbayAPI::Site do
 
     context "by known code" do
       let(:id) { "EBAY-CA" }
-      
+
       it "return a proper site" do
         expect(subject.options).to eq options
       end

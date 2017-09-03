@@ -14,6 +14,11 @@ RSpec.describe EbayAPI::Currency do
         expect { subject }.to raise_error(StandardError, /UAH/)
       end
     end
+
+    context "initialized currency" do
+      let(:key) { described_class["RUB"] }
+      it { is_expected.to eql key }
+    end
   end
 
   describe ".all" do

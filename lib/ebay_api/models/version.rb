@@ -7,9 +7,13 @@ class EbayAPI
     param :name,   proc(&:to_s)
     param :number, proc(&:to_s)
 
+    def primary
+      number.split(".").first
+    end
+
     # @return [Hash<Symbol, Object>]
     def options
-      @__options__
+      @options ||= self.class.dry_initializer.attributes(self)
     end
 
     # Checks equality to another version
@@ -49,31 +53,34 @@ class EbayAPI
 
       # @return [Array<EbayAPI::Version>] list of supported versions
       def all
-        @all ||= YAML.load_file("config/versions.yml").map do |group, data|
-          data.map do |name, numbers|
+        @all ||= YAML.load_file("config/versions.yml").flat_map do |group, data|
+          data.flat_map do |name, numbers|
             numbers.map { |number| new(group, name, number) }
           end
-        end.flatten
+        end
       end
 
       # Finds a version group, name, and number
-      # @param  [#to_s] group
-      # @param  [#to_s] name
+      # @param  (see #[])
       # @param  [#to_s] number
       # @return [EbayAPI::Site] if version supported
       # @raise  [StandardError] if version not supported
-      def call(group, name, number)
-        version = new(group, name, number)
-        find { |item| item == version } ||
-          raise("#{version} not supported by EbayAPI")
+      def call(group, name, number = nil)
+        list = select { |v| group.to_s == v.group && name.to_s == v.name }
+        item = number ? list.find { |v| v.number == number.to_s } : list.last
+        return item if item
+        raise "#{new(group, name, number)} not supported by EbayAPI"
       end
 
       # Curried version of the call
-      # @param  (see #call)
+      # @param  [#to_s] group
+      # @param  [#to_s] name
       # @return (see #call)
       # @raise  (see #call)
-      def [](*args)
-        method(:call).curry(3)[*args]
+      def [](group, name)
+        lambda do |number|
+          number.is_a?(self) ? number : call(group, name, number)
+        end
       end
     end
   end
