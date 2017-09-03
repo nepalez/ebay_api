@@ -15,9 +15,9 @@ class EbayAPI
           validate { errors.add :no_data        if offers.empty? }
           validate { errors.add :limit_exceeded if offers.size > 250 }
 
-          http_method :post
-          path "get_listing_fees"
-          body { { offers: offer_ids.map { |id| { offerId: id } } } }
+          http_method   :post
+          path          "get_listing_fees"
+          body          { { offers: offer_ids.map { |id| { offerId: id } } } }
           response(200) { |_, _, body| JSON.parse(body.first) }
         end
       end

@@ -18,6 +18,7 @@ require "yaml"
 #
 class EbayAPI < Evil::Client
   require_relative "ebay_api/models"
+  require_relative "ebay_api/operations"
 
   option :token,    proc(&:to_s)
   option :site,     Site,            optional: true
@@ -43,6 +44,4 @@ class EbayAPI < Evil::Client
       "X-Ruby-Framework": "https://github.com/evilmartians/evil-client"
     }
   end
-
-  require_relative "ebay_api/operations"
 end
