@@ -13,27 +13,16 @@
 #
 ---
 buy:
-  browse:
-    - "1_beta.7.0"
-  feed:
-    - "1_beta.0.0"
-  marketing:
-    - "1_beta.0.0"
-  order:
-    - "1_beta.7.0"
+  browse: "1_beta.7.0"
+  feed: "1_beta.0.0"
+  marketing: "1_beta.0.0"
+  order: "1_beta.7.0"
 commerce:
-  taxonomy:
-    - "1_beta.0.0"
+  taxonomy: "1_beta.0.0"
 sell:
-  account:
-    - "1.1.0"
-  analytics:
-    - "1.0.0"
-  fullfillemt:
-    - "1.2.0"
-  inventory:
-    - "1.1.0"
-  marketing:
-    - "1.3.0"
-  metadata:
-    - "1.1.0"
+  account: "1.1.0"
+  analytics: "1.0.0"
+  fullfillemt: "1.2.0"
+  inventory: "1.1.0"
+  marketing: "1.3.0"
+  metadata: "1.1.0"

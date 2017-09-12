@@ -2,10 +2,10 @@ class EbayAPI
   # eBay marketplace
   class Site
     extend Dry::Initializer
-    option :id,         optional: true
     option :code,       proc(&:to_s)
     option :country,    proc(&:to_s)
     option :host,       proc(&:to_s)
+    option :id,         proc(&:to_i), optional: true
     option :currencies, ->(v) { Array(v).uniq.map { |rec| Currency.new(rec) } }
     option :languages,  ->(v) { Array(v).uniq.map { |rec| Language.new(rec) } }
 
@@ -38,29 +38,22 @@ class EbayAPI
 
     # Enumberable collection of the eBay marketplaces
     class << self
-      include Collection
-      include Callable
-
-      # @return [Array<EbayAPI::Site>] list of supported sites
-      def all
-        @all ||= YAML.load_file("config/sites.yml").map { |item| new(item) }
-      end
+      include Evil::Client::Dictionary["config/sites.yml"]
 
       # Finds a site by either its id, or code
       # @param  [#to_s] value The value of id or code
       # @return [EbayAPI::Site] if site supported
       # @raise  [StandardError] if site not supported
       def call(value)
-        return value if value.instance_of?(self)
-        value = value.to_s.gsub("_", "-")
+        site   = value if value.instance_of?(self)
+        value  = value.to_s.gsub("_", "-")
+        site ||= if value[/^\d+$/]
+                   find { |item| item.id == value.to_i }
+                 else
+                   select { |item| item.code == value }.inject(:merge)
+                 end
 
-        site = if value[/^\d+$/]
-                 find { |item| item.id.to_s == value }
-               else
-                 select { |item| item.code == value }.inject(:merge)
-               end
-
-        site || raise("Site #{value} not supported by eBay API")
+        site || super
       end
 
       # @return [Array<EbayApi::Language>] list of supported languages

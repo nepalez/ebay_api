@@ -17,6 +17,7 @@ require "yaml"
 #   client.inventory.
 #
 class EbayAPI < Evil::Client
+  require_relative "ebay_api/versions"
   require_relative "ebay_api/models"
   require_relative "ebay_api/operations"
 

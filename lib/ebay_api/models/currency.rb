@@ -1,8 +1,7 @@
 class EbayAPI
   # Key for a currency
   class Currency < String
-    extend Collection
-    extend Callable
+    extend Evil::Client::Dictionary
 
     # @return [Array<EbayAPI::Language>] ordered list of supported currencies
     def self.all
@@ -14,8 +13,7 @@ class EbayAPI
     # @return [String] if a currency is supported
     # @raise  [StandardError] if a currency isn't supported
     def self.call(key)
-      find { |currency| currency == key.to_s } ||
-        raise("Currency '#{key}' not supported by eBay API")
+      super key.to_s
     end
   end
 end

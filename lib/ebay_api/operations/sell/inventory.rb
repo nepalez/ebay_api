@@ -4,8 +4,7 @@
 class EbayAPI
   scope :sell do
     scope :inventory do
-      option :version, Version[:sell, :inventory], default: -> {}
-      path   { "inventory/v#{version.primary}" }
+      path { "inventory/v#{EbayAPI::SELL_INVENTORY_VERSION[/^\d+/]}" }
 
       require_relative "inventory/offers"
     end

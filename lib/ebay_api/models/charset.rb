@@ -1,12 +1,17 @@
 class EbayAPI
   class Charset < String
-    extend Callable
+    extend Evil::Client::Dictionary
 
-    private
+    def self.all
+      @all ||= Encoding.name_list.map(&:downcase)
+    end
 
-    def initialize(value)
-      charset = Encoding.find(value).to_s.downcase
-      charset ? super(charset) : raise("Invalid charset #{value}")
+    def self.call(value)
+      value = value.to_s
+      value = Encoding.find(value) || value
+      value = value.to_s.downcase
+
+      super value
     end
   end
 end
