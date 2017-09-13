@@ -1,3 +1,4 @@
+require "dry-equalizer"
 require "evil/client"
 require "yaml"
 

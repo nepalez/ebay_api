@@ -3,30 +3,24 @@ RSpec.describe EbayAPI::Currency do
     subject(:currency) { described_class[key] }
 
     context "by known key" do
-      let(:key) { :RUB }
-      it { is_expected.to eq "RUB" }
+      let(:key) { :rub }
+
+      it "finds currency" do
+        expect(subject.code).to eq "RUB"
+      end
     end
 
     context "by unknown key" do
-      let(:key) { :UAH }
+      let(:key) { "AAA" }
 
       it "raises ArgumentError" do
-        expect { subject }.to raise_error(StandardError, /UAH/)
+        expect { subject }.to raise_error(StandardError, /AAA/)
       end
     end
 
     context "initialized currency" do
       let(:key) { described_class["RUB"] }
       it { is_expected.to eql key }
-    end
-  end
-
-  describe ".all" do
-    subject { described_class.all }
-
-    it "returns supported currencies" do
-      expect(subject).to match_array \
-        %w[AUD CAD CHF CNY EUR GBP HKD INR MYR PHP PLN RUB SGD USD]
     end
   end
 end

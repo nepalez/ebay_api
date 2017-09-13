@@ -2,12 +2,17 @@ class EbayAPI
   # eBay marketplace
   class Site
     extend Dry::Initializer
-    option :code,       proc(&:to_s)
-    option :country,    proc(&:to_s)
-    option :host,       proc(&:to_s)
+    option :code,       proc(&:to_s), optional: true
+    option :key,        proc(&:to_s), optional: true
+    option :country,    proc(&:to_s), optional: true
+    option :host,       proc(&:to_s), optional: true
     option :id,         proc(&:to_i), optional: true
-    option :currencies, ->(v) { Array(v).uniq.map { |rec| Currency.new(rec) } }
-    option :languages,  ->(v) { Array(v).uniq.map { |rec| Language.new(rec) } }
+    option :currencies,
+           ->(v) { Array(v).uniq.map { |rec| Currency[rec] } },
+           optional: true
+    option :languages,
+           ->(v) { Array(v).uniq.map { |rec| Language.new(rec) } },
+           optional: true
 
     # Representation of the site
     def to_s
@@ -32,6 +37,7 @@ class EbayAPI
       self.class.new code:       code,
                      country:    country,
                      host:       host,
+                     key:        key,
                      currencies: currencies | other.currencies,
                      languages:  languages  | other.languages
     end
@@ -41,19 +47,14 @@ class EbayAPI
       include Evil::Client::Dictionary["config/sites.yml"]
 
       # Finds a site by either its id, or code
-      # @param  [#to_s] value The value of id or code
+      # @param  [#to_s] item The value of id or code
       # @return [EbayAPI::Site] if site supported
       # @raise  [StandardError] if site not supported
-      def call(value)
-        site   = value if value.instance_of?(self)
-        value  = value.to_s.gsub("_", "-")
-        site ||= if value[/^\d+$/]
-                   find { |item| item.id == value.to_i }
-                 else
-                   select { |item| item.code == value }.inject(:merge)
-                 end
-
-        site || super
+      def call(item)
+        list = [item] if item.instance_of?(self)
+        item = item.to_s
+        list ||= select { |rec| [rec.code, rec.key, rec.id.to_s].include? item }
+        list.inject(:merge) || super
       end
 
       # @return [Array<EbayApi::Language>] list of supported languages
@@ -63,7 +64,7 @@ class EbayAPI
 
       # @return [Array<EbayApi::Currency>] list of supported curencies
       def currencies
-        flat_map(&:currencies).uniq.sort
+        flat_map(&:currencies).uniq.sort.map { |item| Currency[item] }
       end
     end
   end

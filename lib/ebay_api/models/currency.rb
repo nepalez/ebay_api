@@ -1,19 +1,15 @@
 class EbayAPI
   # Key for a currency
-  class Currency < String
-    extend Evil::Client::Dictionary
+  class Currency < Evil::Client::Model
+    extend  Evil::Client::Dictionary["config/dictionary.yml#currency"]
+    include Dry::Equalizer(:code)
 
-    # @return [Array<EbayAPI::Language>] ordered list of supported currencies
-    def self.all
-      @all ||= Site.currencies
-    end
+    option :code
+    option :name
 
-    # Finds a currency by its key
-    # @param  [#to_s] key The key for a currency
-    # @return [String] if a currency is supported
-    # @raise  [StandardError] if a currency isn't supported
-    def self.call(key)
-      super key.to_s
+    def self.call(item)
+      rec = item.is_a?(self) ? item : find { |c| c.code == item.to_s.upcase }
+      super(rec || item)
     end
   end
 end

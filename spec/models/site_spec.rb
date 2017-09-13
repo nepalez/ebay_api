@@ -5,7 +5,8 @@ RSpec.describe EbayAPI::Site do
       code:       "EBAY-CA",
       host:       "www.ebay.ca",
       languages:  %w(en-CA fr-CA),
-      currencies: %w(USD CAD)
+      key:        "EBAY_CA",
+      currencies: [EbayAPI::Currency["USD"], EbayAPI::Currency["CAD"]]
     }
   end
 
@@ -17,6 +18,14 @@ RSpec.describe EbayAPI::Site do
 
       it "return a proper site" do
         expect(subject.options).to eq options.merge(id: 2, languages: ["en-CA"])
+      end
+    end
+
+    context "by known key" do
+      let(:id) { "EBAY_CA" }
+
+      it "return a proper site" do
+        expect(subject.options).to eq options.merge(id: 2, languages: %w[en-CA])
       end
     end
 
@@ -62,18 +71,6 @@ RSpec.describe EbayAPI::Site do
 
     it "returns the code" do
       expect(subject).to eq "Canadian"
-    end
-  end
-
-  describe ".all" do
-    subject { described_class.all.uniq }
-
-    it "returns all sites" do
-      expect(subject.map(&:code).uniq).to match_array %w[
-        EBAY-AT EBAY-AU EBAY-BE EBAY-CA EBAY-CH EBAY-CN EBAY-DE EBAY-ES EBAY-FR
-        EBAY-GB EBAY-HK EBAY-IE EBAY-IN EBAY-IT EBAY-MY EBAY-NL EBAY-PH EBAY-PL
-        EBAY-SG EBAY-US EBAY-US.MOTORS
-      ]
     end
   end
 end
