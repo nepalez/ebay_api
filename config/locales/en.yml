@@ -10,9 +10,13 @@ en:
               offers:
                 get_listing_fees:
                   no_data: You must provide 1 to 250 listing ids to check fees
-                  limit_exceeded: You must provide no more than 250 ids at once
+                  limit_exceeded: You must provide no more than 250 ids
         ebay_api/amount:
           negative_value: Negative amounts (%{value} %{currency}) not supported
+        ebay_api/pricing_summary:
+          map_missed: You should either set or skip both MAP price and MAP visibility at the same time
+          stp_missed: You should either set or skip both STP price and STP type at the same time
+          currency_missed: You should define a currency for any price in a pricingSummary contrainer
       sites:
         'EBAY-AT':        'Austrian'
         'EBAY-AU':        'Australian'

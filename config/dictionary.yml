@@ -926,10 +926,6 @@
     active:   false
   - type:     NOT_LISTED
     active:   false
-:min_price: # https://developer.ebay.com/api-docs/sell/inventory/types/slr:MinimumAdvertisedPriceHandlingEnum
-  - NONE
-  - PRE_CHECKOUT
-  - DURING_CHECKOUT
 :offer_status: # https://developer.ebay.com/api-docs/sell/inventory/types/slr:OfferStatusEnum
   - type:      UNPUBLISHED
     published: false
@@ -1016,6 +1012,10 @@
   - code:       PENDING
     requested:  true
     completed:  false
+:price_visibility: # https://developer.ebay.com/api-docs/sell/inventory/types/slr:MinimumAdvertisedPriceHandlingEnum
+  - NONE
+  - PRE_CHECKOUT
+  - DURING_CHECKOUT
 :refund_status: # https://developer.ebay.com/api-docs/sell/fulfillment/types/sel:RefundStatusEnum
   - code:       FAILED
     requested:  true
@@ -1035,7 +1035,7 @@
   - type:          INTERNATIONAL
     domestic:      false
     international: true
-:sold_on: # https://developer.ebay.com/api-docs/sell/inventory/types/slr:SoldOnEnum
+:sold_type: # https://developer.ebay.com/api-docs/sell/inventory/types/slr:SoldOnEnum
   - ON_EBAY
   - OFF_EBAY
   - ON_AND_OFF_EBAY
