@@ -1,5 +1,7 @@
 #
 # List of eBay sites in a traditional XML API
+# https://developer.ebay.com/api-docs/sell/inventory/types/slr:MarketplaceEnum
+# 
 #
 ---
 - :id: 0
@@ -7,142 +9,292 @@
   :country: US
   :currencies: [USD]
   :host: www.ebay.com
+  :key: EBAY_US
   :languages: [en-US]
 - :id: 2
   :code: EBAY-CA
   :country: CA
   :currencies: [USD, CAD]
   :host: www.ebay.ca
+  :key: EBAY_CA
   :languages: [en-CA]
 - :id: 3
   :code: EBAY-GB
   :country: GB
   :currencies: [GBP]
   :host: www.ebay.co.uk
+  :key: EBAY_GB
   :languages: [en-GB]
 - :id: 15
   :code: EBAY-AU
   :country: AU
   :currencies: [AUD]
   :host: www.ebay.com.au
+  :key: EBAY_AU
   :languages: [en-AU]
 - :id: 16
   :code: EBAY-AT
   :country: AT
   :currencies: [EUR]
   :host: www.ebay.at
+  :key: EBAY_AT
   :languages: [de-AT]
 - :id: 23
   :code: EBAY-BE
   :country: BE
   :currencies: [EUR]
   :host: www.ebay.be
+  :key: EBAY_BE_FR
   :languages: [fr-BE]
 - :id: 71
   :code: EBAY-FR
   :country: FR
   :currencies: [EUR]
   :host: www.ebay.fr
+  :key: EBAY_FR
   :languages: [fr-FR]
 - :id: 77
   :code: EBAY-DE
   :country: DE
   :currencies: [EUR]
   :host: www.ebay.de
+  :key: EBAY_DE
   :languages: [de-DE]
 - :id: 100
-  :currencies: [USD]
-  :languages: [en-US]
   :code: EBAY-US.MOTORS
   :country: US
+  :currencies: [USD]
   :host: www.ebay.com/motors
+  :key: EBAY_MOTORS
+  :languages: [en-US]
 - :id: 101
   :code: EBAY-IT
   :country: IT
   :currencies: [EUR]
   :host: www.ebay.it
+  :key: EBAY_IT
   :languages: [it-IT]
 - :id: 123
   :code: EBAY-BE
   :country: BE
   :currencies: [EUR]
   :host: www.ebay.be
+  :key: EBAY_BE_NL
   :languages: [nl-BE]
 - :id: 146
   :code: EBAY-NL
   :country: NL
   :currencies: [EUR]
   :host: www.ebay.nl
+  :key: EBAY_NL
   :languages: [nl-NL]
 - :id: 186
   :code: EBAY-ES
   :country: ES
   :currencies: [EUR]
   :host: www.ebay.es
+  :key: EBAY_ES
   :languages: [es-ES]
 - :id: 193
   :code: EBAY-CH
   :country: CH
   :currencies: [CHF]
   :host: www.ebay.ch
+  :key: EBAY_CH
   :languages: [de-CH]
+- :id: 
+  :code: 
+  :country: TW
+  :currencies: 
+  :host: ebay.com/tw
+  :key: EBAY_TW
+  :languages: 
+- :id: 
+  :code:
+  :country: CZ
+  :currencies: 
+  :host: ebay.com/sch/Czech-Republic
+  :key: EBAY_CZ
+  :languages: 
 - :id: 201
   :code: EBAY-HK
   :country: HK
   :currencies: [HKD]
   :host: www.ebay.com.hk
+  :key: EBAY_HK
   :languages: [zh-HK]
 - :id: 203
   :code: EBAY-IN
   :country: IN
   :currencies: [INR]
   :host: www.ebay.in
+  :key: EBAY_IN
   :languages: [en-IN]
 - :id: 205
   :code: EBAY-IE
   :country: IE
   :currencies: [EUR]
   :host: www.ebay.ie
+  :key: EBAY_IE
   :languages: [en-IE]
 - :id: 207
   :code: EBAY-MY
   :country: MY
   :currencies: [MYR]
   :host: www.ebay.com.my
+  :key: EBAY_MY
   :languages: [en-MY]
 - :id: 210
   :code: EBAY-CA
   :country: CA
   :currencies: [USD, CAD]
-  :host: www.ebay.ca
+  :host: www.cafr.ebay.ca
+  :key: EBAY_CA_FR
   :languages: [fr-CA]
 - :id: 211
   :code: EBAY-PH
   :country: PH
   :currencies: [PHP]
   :host: www.ebay.ph
+  :key: EBAY_PH
   :languages: [en-PH]
 - :id: 212
   :code: EBAY-PL
   :country: PL
   :currencies: [PLN]
   :host: www.ebay.pl
+  :key: EBAY_PL
   :languages: [pl-PL]
 - :id: 215
   :code: EBAY-US
   :country: RU
   :currencies: [RUB]
-  :host: www.ebay.com
+  :host: ebay.com/sch/Russia
+  :key: EBAY_RU
   :languages: [ru-RU]
 - :id: 216
   :code: EBAY-SG
   :country: SG
   :currencies: [SGD]
   :host: www.ebay.com.sg
+  :key: EBAY_SG
   :languages: [en-SG]
 - :id: 223
   :code: EBAY-CN
   :country: CN
   :currencies: [CNY]
   :host: ebay.cn
+  :key: EBAY_CN
   :languages: [zh-CN]
+- :id: 
+  :code: 
+  :country: DK
+  :currencies: 
+  :host: ebay.com/sch/Denmark
+  :key: EBAY_DK
+  :languages: 
+- :id: 
+  :code: 
+  :country: FI
+  :currencies: 
+  :host: www.ebay.com/sch/Finland
+  :key: EBAY_FI
+  :languages: 
+- :id: 
+  :code: 
+  :country: GR
+  :currencies: 
+  :host: www.ebay.com/sch/Greece
+  :key: EBAY_GR
+  :languages: 
+- :id: 
+  :code: 
+  :country: HU
+  :currencies: 
+  :host: www.ebay.com/sch/Hungary
+  :key: EBAY_HU
+  :languages: 
+- :id: 
+  :code: 
+  :country: ID
+  :currencies: 
+  :host: www.id.ebay.com
+  :key: EBAY_ID
+  :languages: 
+- :id: 
+  :code: 
+  :country: IS
+  :currencies: 
+  :host: www.ebay.com/sch/Israel
+  :key: EBAY_IL
+  :languages: 
+- :id: 
+  :code: 
+  :country: NZ
+  :currencies: 
+  :host: www.ebay.com/sch/New-Zealand
+  :key: EBAY_NZ
+  :languages: 
+- :id: 
+  :code: 
+  :country: 'NO'
+  :currencies: 
+  :host: www.ebay.com/sch/Norway
+  :key: EBAY_NO
+  :languages: 
+- :id: 
+  :code: 
+  :country: PT
+  :currencies: 
+  :host: www.ebay.com/sch/Portugal
+  :key: EBAY_PT
+  :languages: 
+- :id: 
+  :code: 
+  :country: PR
+  :currencies: 
+  :host: www.ebay.com/sch/Puerto-Rico
+  :key: EBAY_PR
+  :languages: 
+- :id: 
+  :code: 
+  :country: ZA
+  :currencies: 
+  :host: www.ebay.com/sch/South-Africa
+  :key: EBAY_ZA
+  :languages: 
+- :id: 
+  :code: 
+  :country: SE
+  :currencies: 
+  :host: www.ebay.com/sch/Sweden
+  :key: EBAY_SE
+  :languages: 
+- :id: 
+  :code: 
+  :country: TH
+  :currencies: 
+  :host: export.ebay.co.th
+  :key: EBAY_TH
+  :languages: 
+- :id: 
+  :code: 
+  :country: VN
+  :currencies: 
+  :host: www.ebay.vn
+  :key: EBAY_VN
+  :languages: 
+- :id: 
+  :code: 
+  :country: PE
+  :currencies: 
+  :host: www.ebay.com/sch/Peru
+  :key: EBAY_PE
+  :languages: 
+- :id: 
+  :code: 
+  :country: JP
+  :currencies: 
+  :host: www.ebay.co.jp
+  :key: EBAY_JP
+  :languages: 

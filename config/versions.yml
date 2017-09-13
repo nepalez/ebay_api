@@ -1,16 +1,4 @@
-#
-# The list of supported versions of API with version-specific settings.
-#
-# When API team releases new version of some API, you should
-# register the version number with all the necessary settings
-# to specify differencies between versions.
-#
-# Don't forget to reflect new settings in [EbayAPI::Version] model
-# (defined at lib/ebay_api/version.rb).
-#
-# Notice, that [EbayAPI::Version] applies settings from previous version
-# to the next version(s) authomatically; here you must define differencies only.
-#
+# Supported versions of API
 ---
 buy:
   browse: "1_beta.7.0"
