@@ -17,6 +17,9 @@ en:
           map_missed: You should either set or skip both MAP price and MAP visibility at the same time
           stp_missed: You should either set or skip both STP price and STP type at the same time
           currency_missed: You should define a currency for any price in a pricingSummary contrainer
+        ebay_api/tax:
+          negative_vat: vatPercentage (%{vat}%) should not be negative
+          robbery_vat:  vatPercentage (%{vat}%) should not exceed 100%
       sites:
         'EBAY-AT':        'Austrian'
         'EBAY-AU':        'Australian'

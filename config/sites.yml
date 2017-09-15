@@ -1,7 +1,6 @@
 #
-# List of eBay sites in a traditional XML API
+# List of eBay sites
 # https://developer.ebay.com/api-docs/sell/inventory/types/slr:MarketplaceEnum
-# 
 #
 ---
 - :id: 0
