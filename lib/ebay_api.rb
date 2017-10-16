@@ -46,4 +46,5 @@ class EbayAPI < Evil::Client
       "X-Ruby-Framework": "https://github.com/evilmartians/evil-client"
     }
   end
+  response(200) { |_, _, body| JSON.parse(body.first) }
 end

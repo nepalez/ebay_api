@@ -8,4 +8,5 @@ group :development, :test do
   gem "pry-byebug", platform: :mri
 end
 
-gem "evil-client", path: "../evil-client"
+gem "evil-client", git: "https://github.com/evilmartians/evil-client",
+                   branch: "master"
