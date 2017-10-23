@@ -22,7 +22,10 @@ class EbayAPI < Evil::Client
   require_relative "ebay_api/models"
   require_relative "ebay_api/operations"
 
-  option :token,    proc(&:to_s)
+  class Error < RuntimeError; end
+  class InvalidAccessToken < RuntimeError; end
+
+  option :token
   option :site,     Site,            optional: true
   option :language, Language,        optional: true
   option :charset,  Charset,         default:  proc { "utf-8" }
@@ -37,7 +40,12 @@ class EbayAPI < Evil::Client
 
   format   "json"
   path     { "https://api#{".sandbox" if sandbox}.ebay.com/" }
-  security { token_auth token, prefix: "Bearer" }
+
+  security do
+    token_value = token.respond_to?(:call) ? token.call : token
+    token_auth token_value, prefix: "Bearer"
+  end
+
   headers do
     {
       "Accept-Language":  language,
@@ -46,5 +54,16 @@ class EbayAPI < Evil::Client
       "X-Ruby-Framework": "https://github.com/evilmartians/evil-client"
     }
   end
+
   response(200) { |_, _, body| JSON.parse(body.first) }
+
+  response(401) do |_, _, body|
+    data = JSON.parse(body.first)
+    case data.dig("errors", 0, "errorId")
+    when 1001
+      raise InvalidAccessToken, data.dig("errors", 0, "longMessage")
+    else
+      raise Error, data.dig("errors", 0, "longMessage")
+    end
+  end
 end
