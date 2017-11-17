@@ -22,4 +22,6 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency "rubocop", "~> 0.42"
   gem.add_development_dependency "timecop", "~> 0.9"
   gem.add_development_dependency "webmock", "~> 2.1"
+  gem.add_development_dependency "pry"
+  gem.add_development_dependency "httplog"
 end

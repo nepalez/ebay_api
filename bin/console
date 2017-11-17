@@ -1,0 +1,47 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "bundler/setup"
+require "ebay_api"
+require "httplog"
+require "pry"
+
+I18n.available_locales = %i[en] if I18n.available_locales.empty?
+I18n.load_path += Dir[
+    File.join(File.dirname(__dir__), "config", "locales", "**", "*.{rb,yml}")
+]
+
+client = if ARGV[0] && (file = File.expand_path(ARGV[0])) && File.exists?(file)
+  data = File.open(file, &YAML.method(:load))
+
+  require "ebay_api/token_manager"
+  require "time"
+
+  token_manager = EbayAPI::TokenManager.new(
+    access_token:             data["access_token"],
+    access_token_expires_at:  Time.iso8601(data["access_token_expires_at"]),
+    refresh_token:            data["refresh_token"],
+    refresh_token_expires_at: Time.iso8601(data["refresh_token_expires_at"]),
+    appid:                    data["appid"],
+    certid:                   data["certid"],
+    on_refresh: -> (access_token, access_token_expires_at) {
+      new_yaml = data.merge(
+        "access_token" => access_token,
+        "access_token_expires_at" => access_token_expires_at.iso8601,
+      ).to_yaml
+      begin
+        File.write(file, new_yaml)
+      rescue Errno::EACCES => e
+        warn "Couldn't save new token to file #{file}. #{e.class}: #{e.message}"
+      end
+    }
+  )
+
+  EbayAPI.new(
+    token: token_manager.method(:access_token),
+    site: data["site"],
+    language: data["language"],
+  )
+end
+
+Pry.start
