@@ -33,8 +33,8 @@ class EbayAPI < Evil::Client
   option :gzip,     true.method(:&), default:  proc { false }
 
   validate do
-    return unless language && site
-    return if site.languages.include?(language)
+    next unless language && site
+    next if site.languages.include?(language)
     errors.add :wrong_language, language: language, site: site
   end
 
