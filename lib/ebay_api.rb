@@ -21,6 +21,7 @@ class EbayAPI < Evil::Client
   require_relative "ebay_api/versions"
   require_relative "ebay_api/models"
   require_relative "ebay_api/operations"
+  require_relative "ebay_api/middlewares"
 
   class Error < RuntimeError; end
   class InvalidAccessToken < RuntimeError; end
@@ -41,6 +42,8 @@ class EbayAPI < Evil::Client
   format   "json"
   path     { "https://api#{".sandbox" if sandbox}.ebay.com/" }
 
+  middleware JSONResponse
+
   security do
     token_value = token.respond_to?(:call) ? token.call : token
     token_auth token_value, prefix: "Bearer"
@@ -55,10 +58,9 @@ class EbayAPI < Evil::Client
     }
   end
 
-  response(200) { |_, _, body| JSON.parse(body.first) }
+  response(200) { |_, _, (data, *)| data }
 
-  response(401) do |_, _, body|
-    data = JSON.parse(body.first)
+  response(401) do |_, _, (data, *)|
     case data.dig("errors", 0, "errorId")
     when 1001
       raise InvalidAccessToken, data.dig("errors", 0, "longMessage")
