@@ -74,7 +74,60 @@ In the console, `client` variable will contain API client configured with seller
 When the access token expires, it will be refreshed and written to file.
 
 
+## Writing your own operations
+
+See the [evil-client] gem docs.
+
+
+### Paginated collections
+
+For retrieving list of some entities eBay REST APIs provides endpoints with pagination. Page size is limited to 500 entities.
+
+For allowing to retrieve more records `PaginatedCollection` middleware and result wrapper are provided.
+
+ 1. Wrap response from API to the `PaginatedCollection` instance to allow enumeration of records
+ 2. To rewrite `limit` parameter of outgoing requests, build and include special middleware in operation.
+
+Example operation:
+
+```ruby
+scope :items do
+  operation :list do
+    http_method :get
+
+    option :limit,  optional: true
+    option :offset, optional: true
+
+    query { { limit: limit, offset: offset }.compact }
+
+    middleware { PaginatedCollection::MiddlewareBuilder.call }
+
+    response(200) do |*response|
+      PaginatedCollection.new(self, response, "items")
+    end
+  end
+end
+```
+
+Usage:
+
+```ruby
+result = client.items.list
+
+# Will issue requests to retrieve all records
+result.each { |item| do_stuff }
+
+# Will issue only requests needed to get required items
+# (no additional requests if all of them are on the first page)
+result.lazy.map { |item| item["itemId"] }.take(5).to_a
+
+# Will get from 101st up to 1300th record with 3 requests (with limit `500`)
+client.list(offset: 100, limit: 1200).to_a
+```
+
+
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
 
+[evil-client]: https://github.com/evilmartians/evil-client "Human-friendly DSL for writing HTTP(S) clients to OpenAPI servers in Ruby"
