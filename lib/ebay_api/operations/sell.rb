@@ -6,5 +6,6 @@ class EbayAPI
     path "sell"
 
     require_relative "sell/inventory"
+    require_relative "sell/marketing"
   end
 end

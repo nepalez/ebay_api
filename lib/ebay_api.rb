@@ -18,13 +18,14 @@ require "yaml"
 #   client.inventory.
 #
 class EbayAPI < Evil::Client
+  GEM_ROOT = File.dirname(__dir__)
+  DICTIONARY_FILE = File.join(GEM_ROOT, *%w[config dictionary.yml])
+
   require_relative "ebay_api/versions"
   require_relative "ebay_api/models"
   require_relative "ebay_api/operations"
   require_relative "ebay_api/middlewares"
-
-  class Error < RuntimeError; end
-  class InvalidAccessToken < RuntimeError; end
+  require_relative "ebay_api/exceptions"
 
   option :token
   option :site,     Site,            optional: true
@@ -60,12 +61,13 @@ class EbayAPI < Evil::Client
 
   response(200) { |_, _, (data, *)| data }
 
-  response(401) do |_, _, (data, *)|
-    case data.dig("errors", 0, "errorId")
+  response(400, 401, 409) do |_, _, (data, *)|
+    case (code = data.dig("errors", 0, "errorId"))
     when 1001
-      raise InvalidAccessToken, data.dig("errors", 0, "longMessage")
+      message = data.dig("errors", 0, "longMessage")
+      raise InvalidAccessToken.new(code: code), message
     else
-      raise Error, data.dig("errors", 0, "longMessage")
+      raise Error.new(code: code), data.dig("errors", 0, "message")
     end
   end
 end

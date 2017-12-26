@@ -1,0 +1,6 @@
+HTTP/1.1 200 OK
+Content-Length: 139
+Content-Type: application/json
+
+{"responses":[{"statusCode":201,"listingId":"322946981233","adId":"8","href":"https://api.ebay.com/sell/marketing/v1/ad_campaign/1/ad/8"}]}
+

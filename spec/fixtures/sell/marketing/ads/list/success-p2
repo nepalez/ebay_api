@@ -1,0 +1,5 @@
+HTTP/1.1 200 OK
+Content-Length: 179
+Content-Type: application/json
+
+{"href":"https://api.ebay.com/sell/marketing/v1/ad_campaign/1/ad?offset=1&limit=1","total":2,"ads":[{"adId":"5019","bidPercentage":"5.4","listingId":"2424"}],"limit":1,"offset":1}

@@ -1,6 +1,6 @@
 class EbayAPI
   class PriceVisibility < String
-    extend Evil::Client::Dictionary["config/dictionary.yml#price_visibility"]
+    extend Evil::Client::Dictionary["#{DICTIONARY_FILE}#price_visibility"]
 
     def self.call(value)
       super value.to_s.upcase

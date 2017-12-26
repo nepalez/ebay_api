@@ -8,5 +8,5 @@ group :development, :test do
   gem "pry-byebug", platform: :mri
 end
 
-gem "evil-client", git: "https://github.com/evilmartians/evil-client",
-                   branch: "master"
+# Use master branch as 2.1 is not released at the moment
+gem "evil-client", git: "https://github.com/evilmartians/evil-client"

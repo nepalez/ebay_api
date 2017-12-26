@@ -1,7 +1,7 @@
 class EbayAPI
   # Key for a currency
   class Currency < Evil::Client::Model
-    extend  Evil::Client::Dictionary["config/dictionary.yml#currency"]
+    extend  Evil::Client::Dictionary["#{DICTIONARY_FILE}#currency"]
     include Dry::Equalizer(:code)
 
     option :code

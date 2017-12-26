@@ -1,0 +1,5 @@
+HTTP/1.1 207 Multiple Statuses
+Content-Length: 535
+Content-Type: application/json
+
+{"responses":[{"statusCode":404,"listingId":"222372324170","errors":[{"errorId":35044,"domain":"API_MARKETING","category":"REQUEST","message":"No Ad found for 'ad_id' . Please correct the 'ad_id' and try again.","parameters":[{"name":"listingId","value":"222372324170"}]}]},{"statusCode":404,"listingId":"222214540024","errors":[{"errorId":35044,"domain":"API_MARKETING","category":"REQUEST","message":"No Ad found for 'ad_id' . Please correct the 'ad_id' and try again.","parameters":[{"name":"listingId","value":"222214540024"}]}]}]}

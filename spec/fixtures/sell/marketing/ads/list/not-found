@@ -1,0 +1,5 @@
+HTTP/1.1 404 Not found
+Content-Length: 179
+Content-Type: application/json
+
+{"errors":[{"errorId":35045,"domain":"API_MARKETING","category":"REQUEST","message":" No campaign found for 'campaign_id' 1. ","parameters":[{"name":"campaign_id","value":"1"}]}]}

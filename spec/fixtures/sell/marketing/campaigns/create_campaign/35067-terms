@@ -1,0 +1,5 @@
+HTTP/1.1 409 Bad Request
+Content-Length: 358
+Content-Type: application/json
+
+{"errors":[{"errorId":35067,"domain":"API_MARKETING","category":"BUSINESS","message":" The seller must accept the Promoted Listings terms and conditions. Please accept Promoted Listings terms and conditions by visiting this link http://www.ebay.co.uk/pl/agreement .","parameters":[{"name":"userAgreementLink","value":"http://www.ebay.co.uk/pl/agreement"}]}]}

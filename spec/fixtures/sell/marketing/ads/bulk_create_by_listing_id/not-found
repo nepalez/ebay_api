@@ -1,0 +1,5 @@
+HTTP/1.1 207 Multiple Statuses
+Content-Length: 244
+Content-Type: application/json
+
+{"responses":[{"statusCode":404,"listingId":"32294698123434","errors":[{"errorId":35048,"domain":"API_MARKETING","category":"REQUEST","message":"The listing Id 123 is invalid or has ended.","parameters":[{"name":"listingId","value":"123"}]}]}]}

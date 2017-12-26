@@ -44,7 +44,8 @@ class EbayAPI
 
     # Enumberable collection of the eBay marketplaces
     class << self
-      include Evil::Client::Dictionary["config/sites.yml"]
+      sites_file = File.join(GEM_ROOT, %w[config sites.yml])
+      include Evil::Client::Dictionary[sites_file]
 
       # Finds a site by either its id, or code
       # @param  [#to_s] item The value of id or code

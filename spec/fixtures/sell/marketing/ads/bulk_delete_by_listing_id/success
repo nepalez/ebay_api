@@ -1,0 +1,5 @@
+HTTP/1.1 200 OK
+Content-Length: 82
+Content-Type: application/json
+
+{"responses":[{"statusCode":200,"listingId":"322946981233","adId":"81927927018"}]}
