@@ -14,14 +14,16 @@ describe EbayAPI::TokenManager do
         .to_return(status: 200, body: refresh_response)
   end
 
+  let(:access_token)   { "old_token" }
+  let(:refresh_token)  { "refreshing" }
   let(:access_expire)  { Time.now + 120 }
   let(:refresh_expire) { Time.now + 1 }
   let(:callback) { proc {} }
 
   subject do
     described_class.new(
-        access_token:  "old_token",  access_token_expires_at:  access_expire,
-        refresh_token: "refreshing", refresh_token_expires_at: refresh_expire,
+        access_token:  access_token,  access_token_expires_at:  access_expire,
+        refresh_token: refresh_token, refresh_token_expires_at: refresh_expire,
         appid: "1", certid: "2", sandbox: true,
         on_refresh: callback
     )
@@ -57,6 +59,18 @@ describe EbayAPI::TokenManager do
       it "gets and returns a new access token" do
         expect(subject.access_token).to eq("new_token")
         expect(api).to have_been_requested
+      end
+    end
+
+    context "without tokens" do
+      let(:access_token)   { nil }
+      let(:refresh_token)  { nil }
+      let(:access_expire)  { nil }
+      let(:refresh_expire) { nil }
+
+      it "just returns nil" do
+        expect(subject.access_token).to eq(access_token)
+        expect(api).not_to have_been_requested
       end
     end
   end
