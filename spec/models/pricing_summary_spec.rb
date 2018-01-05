@@ -61,24 +61,24 @@ RSpec.describe EbayAPI::PricingSummary do
   context "with map price only" do
     before { source.delete "pricingVisibility" }
 
-    it "raises Evil::Client::ValidationError" do
-      expect { subject }.to raise_error Evil::Client::ValidationError, /MAP/
+    it "raises StandardError" do
+      expect { subject }.to raise_error StandardError, /MAP/
     end
   end
 
   context "with map visibility only" do
     before { source.delete "minimumAdvertisedPrice" }
 
-    it "raises Evil::Client::ValidationError" do
-      expect { subject }.to raise_error Evil::Client::ValidationError, /MAP/
+    it "raises StandardError" do
+      expect { subject }.to raise_error StandardError, /MAP/
     end
   end
 
   context "with wrong visibility" do
     before { source["pricingVisibility"] = "FOO" }
 
-    it "raises Evil::Client::ValidationError" do
-      expect { subject }.to raise_error Evil::Client::ValidationError, /FOO/
+    it "raises StandardError" do
+      expect { subject }.to raise_error StandardError, /FOO/
     end
   end
 
@@ -96,41 +96,41 @@ RSpec.describe EbayAPI::PricingSummary do
   context "with stp price only" do
     before { source.delete "originallySoldForRetailPriceOn" }
 
-    it "raises Evil::Client::ValidationError" do
-      expect { subject }.to raise_error Evil::Client::ValidationError, /STP/
+    it "raises StandardError" do
+      expect { subject }.to raise_error StandardError, /STP/
     end
   end
 
   context "with stp type only" do
     before { source.delete "originalRetailPrice" }
 
-    it "raises Evil::Client::ValidationError" do
-      expect { subject }.to raise_error Evil::Client::ValidationError, /STP/
+    it "raises StandardError" do
+      expect { subject }.to raise_error StandardError, /STP/
     end
   end
 
   context "with wrong stp_type" do
     before { source["originallySoldForRetailPriceOn"] = "FOO" }
 
-    it "raises Evil::Client::ValidationError" do
-      expect { subject }.to raise_error Evil::Client::ValidationError, /FOO/
+    it "raises StandardError" do
+      expect { subject }.to raise_error StandardError, /FOO/
     end
   end
 
   context "without currency" do
     before { source.delete "currency" }
 
-    it "raises Evil::Client::ValidationError" do
+    it "raises StandardError" do
       expect { subject }
-        .to raise_error Evil::Client::ValidationError, /currency/
+        .to raise_error StandardError, /currency/
     end
   end
 
   context "with wrong currency" do
     before { source["currency"] = "FOO" }
 
-    it "raises Evil::Client::ValidationError" do
-      expect { subject }.to raise_error Evil::Client::ValidationError, /FOO/
+    it "raises StandardError" do
+      expect { subject }.to raise_error StandardError, /FOO/
     end
   end
 end

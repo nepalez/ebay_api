@@ -22,27 +22,27 @@ RSpec.describe EbayAPI::Tax do
   context "when vat is not set" do
     before { source.delete :vatPercentage }
 
-    it "raises Evil::Client::ValidationError" do
+    it "raises StandardError" do
       expect { model }
-        .to raise_error Evil::Client::ValidationError, /vatPercentage/
+        .to raise_error StandardError, /vatPercentage/
     end
   end
 
   context "when vat is negative" do
     before { source[:vatPercentage] = -1 }
 
-    it "raises Evil::Client::ValidationError" do
+    it "raises StandardError" do
       expect { model }
-        .to raise_error Evil::Client::ValidationError, /vatPercentage/
+        .to raise_error StandardError, /vatPercentage/
     end
   end
 
   context "when vat is greater than 100" do
     before { source[:vatPercentage] = 100.001 }
 
-    it "raises Evil::Client::ValidationError" do
+    it "raises StandardError" do
       expect { model }
-        .to raise_error Evil::Client::ValidationError, /vatPercentage/
+        .to raise_error StandardError, /vatPercentage/
     end
   end
 end

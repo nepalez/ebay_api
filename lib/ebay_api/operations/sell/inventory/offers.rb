@@ -9,7 +9,6 @@ class EbayAPI
 
         operation :create_offer do
           http_method :post
-
         end
 
         operation :update_offer do

@@ -16,16 +16,16 @@ RSpec.describe EbayAPI::Amount do
   context "when currency not supported" do
     before { source[:currency] = "AAA" }
 
-    it "raises Evil::Client::ValidationError" do
-      expect { model }.to raise_error Evil::Client::ValidationError, /AAA/
+    it "raises StandardError" do
+      expect { model }.to raise_error StandardError, /AAA/
     end
   end
 
   context "when value is negative" do
     before { source[:value] = -1 }
 
-    it "raises Evil::Client::ValidationError" do
-      expect { model }.to raise_error Evil::Client::ValidationError, /-1.0 USD/
+    it "raises StandardError" do
+      expect { model }.to raise_error StandardError, /-1.0 USD/
     end
   end
 

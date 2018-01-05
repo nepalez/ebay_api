@@ -13,7 +13,7 @@ Gem::Specification.new do |gem|
 
   gem.required_ruby_version = ">= 2.2"
 
-  gem.add_runtime_dependency "evil-client", "~> 2.1"
+  gem.add_runtime_dependency "evil-client", "~> 3.0", ">= 3.0.1"
   gem.add_runtime_dependency "dry-equalizer"
 
   gem.add_development_dependency "rake", ">= 10"
@@ -22,6 +22,5 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency "rubocop", "~> 0.42"
   gem.add_development_dependency "timecop", "~> 0.9"
   gem.add_development_dependency "webmock", "~> 2.1"
-  gem.add_development_dependency "pry"
   gem.add_development_dependency "httplog"
 end
