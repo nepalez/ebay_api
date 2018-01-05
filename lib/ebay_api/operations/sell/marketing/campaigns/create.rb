@@ -16,9 +16,9 @@ class EbayAPI
           response(400, 409) do |_, _, (data, *)|
             msg = data.dig("errors", 0, "message")
             case (code = data.dig("errors", 0, "errorId"))
-            when 35021
+            when 35_021
               raise EbayAPI::AlreadyExists.new(code: code), msg
-            when 35067
+            when 35_067
               url = data.dig("errors", 0, "parameters").find do |e|
                 e["name"] == "userAgreementLink"
               end&.dig("value")

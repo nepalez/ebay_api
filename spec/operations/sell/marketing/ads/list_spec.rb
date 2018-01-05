@@ -30,31 +30,34 @@ RSpec.describe EbayAPI, ".sell.marketing.ads.list" do
     end
 
     context "without params" do
-      it do
-        expect(subject).to eq \
-          [
-            {"adId"=>"5018", "bidPercentage"=>"5.3", "listingId"=>"2423"},
-            {"adId"=>"5019", "bidPercentage"=>"5.4", "listingId"=>"2424"}
-          ]
+      let(:result) do
+        [
+          { "adId" => "5018", "bidPercentage" => "5.3", "listingId" => "2423" },
+          { "adId" => "5019", "bidPercentage" => "5.4", "listingId" => "2424" }
+        ]
       end
+
+      it { is_expected.to eq result }
     end
 
     context "with limit" do
       let(:params) { { limit: 1 } }
 
-      it do
-        expect(subject).to eq \
-          [{"adId"=>"5018", "bidPercentage"=>"5.3", "listingId"=>"2423"}]
+      let(:result) do
+        [{ "adId" => "5018", "bidPercentage" => "5.3", "listingId" => "2423" }]
       end
+
+      it { is_expected.to eq result }
     end
 
     context "with offset" do
       let(:params) { { offset: 1 } }
 
-      it do
-        expect(subject).to eq \
-          [{"adId"=>"5019", "bidPercentage"=>"5.4", "listingId"=>"2424"}]
+      let(:result) do
+        [{ "adId" => "5019", "bidPercentage" => "5.4", "listingId" => "2424" }]
       end
+
+      it { is_expected.to eq result }
     end
   end
 
@@ -65,7 +68,7 @@ RSpec.describe EbayAPI, ".sell.marketing.ads.list" do
 
     it do
       expect { subject }.to raise_error(EbayAPI::Error) do |ex|
-        expect(ex.code).to eq 35045
+        expect(ex.code).to eq 35_045
         expect(ex.message).to match \
           /No campaign found for 'campaign_id' 1/
       end

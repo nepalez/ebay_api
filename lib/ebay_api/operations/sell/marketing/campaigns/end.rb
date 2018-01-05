@@ -12,7 +12,7 @@ class EbayAPI
           response(204) { true }
           response(400, 409) do |_, _, (data, *)|
             case data.dig("errors", 0, "errorId")
-            when 35035 then next true # Already ended, nothing to do here
+            when 35_035 then next true # Already ended, nothing to do here
             else super!
             end
           end

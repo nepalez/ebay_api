@@ -18,7 +18,7 @@ class EbayAPI
     def to_s
       @value
     end
-    alias_method :to_h, :to_s
-    alias_method :to_hash, :to_s
+    alias to_h to_s
+    alias to_hash to_s
   end
 end

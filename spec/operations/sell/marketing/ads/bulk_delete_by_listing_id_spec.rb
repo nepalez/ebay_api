@@ -45,14 +45,14 @@ RSpec.describe EbayAPI, ".sell.marketing.ads.bulk_delete_by_listing_id" do
         include(
           "statusCode" => 404, "listingId" => "222372324170",
           "errors" => contain_exactly(include(
-            "errorId" => 35044,
+            "errorId" => 35_044,
             "message" => match(/No Ad found for 'ad_id'/)
-          )),
+          ))
         ),
         include(
           "statusCode" => 404, "listingId" => "222214540024",
           "errors" => contain_exactly(include(
-            "errorId" => 35044,
+            "errorId" => 35_044,
             "message" => match(/No Ad found for 'ad_id'/)
           ))
         )

@@ -51,7 +51,7 @@ class EbayAPI
         startDate:         start_date,
         endDate:           end_date,
         marketplaceId:     marketplace_id,
-        campaignCriterion: campaign_criterion&.to_h,
+        campaignCriterion: campaign_criterion&.to_h
       }.reject { |_, value| value.nil? }
     end
   end

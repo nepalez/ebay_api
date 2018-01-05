@@ -14,6 +14,6 @@ class EbayAPI
     def to_s
       @value&.utc&.iso8601(3)
     end
-    alias_method :to_hash, :to_s
+    alias to_hash to_s
   end
 end

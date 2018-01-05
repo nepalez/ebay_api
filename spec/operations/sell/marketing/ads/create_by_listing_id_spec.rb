@@ -28,7 +28,7 @@ RSpec.describe EbayAPI, ".sell.marketing.ads.create_by_listing_id" do
 
     it do
       expect { subject }.to raise_error(EbayAPI::Error) do |ex|
-        expect(ex.code).to eq 35057
+        expect(ex.code).to eq 35_057
         expect(ex.message).to match \
           /The listing Id 222231499902 does not belong to the seller/
       end

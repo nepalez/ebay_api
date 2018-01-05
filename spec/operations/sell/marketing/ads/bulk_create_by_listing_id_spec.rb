@@ -42,7 +42,7 @@ RSpec.describe EbayAPI, ".sell.marketing.ads.bulk_create_by_listing_id" do
 
     it do
       expect { subject }.to raise_error(EbayAPI::Error) do |ex|
-        expect(ex.code).to eq 35007
+        expect(ex.code).to eq 35_007
         expect(ex.message).to match \
           /The 'bidPercentage' null is not valid/
       end
@@ -59,7 +59,7 @@ RSpec.describe EbayAPI, ".sell.marketing.ads.bulk_create_by_listing_id" do
         include(
           "statusCode" => 404, "listingId" => "32294698123434",
           "errors" => contain_exactly(include(
-            "errorId" => 35048,
+            "errorId" => 35_048,
             "message" => "The listing Id 123 is invalid or has ended."
           ))
         )

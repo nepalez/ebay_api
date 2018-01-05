@@ -29,7 +29,7 @@ class EbayAPI
     def to_h
       {
         bidPercentage: bid_percentage,
-        fundingModel:  funding_model,
+        fundingModel:  funding_model
       }
     end
   end

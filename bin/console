@@ -11,9 +11,8 @@ I18n.load_path += Dir[
     File.join(File.dirname(__dir__), "config", "locales", "**", "*.{rb,yml}")
 ]
 
-client = if ARGV[0] && (file = File.expand_path(ARGV[0])) && File.exists?(file)
+if ARGV[0] && (file = File.expand_path(ARGV[0])) && File.exists?(file)
   data = File.open(file, &YAML.method(:load))
-
   require "ebay_api/token_manager"
   require "time"
 
@@ -27,7 +26,7 @@ client = if ARGV[0] && (file = File.expand_path(ARGV[0])) && File.exists?(file)
     on_refresh: -> (access_token, access_token_expires_at) {
       new_yaml = data.merge(
         "access_token" => access_token,
-        "access_token_expires_at" => access_token_expires_at.iso8601,
+        "access_token_expires_at" => access_token_expires_at.iso8601
       ).to_yaml
       begin
         File.write(file, new_yaml)
@@ -40,7 +39,7 @@ client = if ARGV[0] && (file = File.expand_path(ARGV[0])) && File.exists?(file)
   EbayAPI.new(
     token: token_manager.method(:access_token),
     site: data["site"],
-    language: data["language"],
+    language: data["language"]
   )
 end
 

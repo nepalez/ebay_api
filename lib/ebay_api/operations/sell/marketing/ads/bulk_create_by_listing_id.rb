@@ -16,7 +16,7 @@ class EbayAPI
                 requests: ad_requests.map do |ad_request|
                   {
                       listingId:     ad_request[:listing_id],
-                      bidPercentage: ad_request[:bid],
+                      bidPercentage: ad_request[:bid]
                   }
                 end
             }

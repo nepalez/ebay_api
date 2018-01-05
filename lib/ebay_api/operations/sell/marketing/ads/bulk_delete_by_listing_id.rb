@@ -13,7 +13,7 @@ class EbayAPI
             {
                 requests: listing_ids.map do |listing_id|
                   {
-                      listingId: listing_id,
+                      listingId: listing_id
                   }
                 end
             }

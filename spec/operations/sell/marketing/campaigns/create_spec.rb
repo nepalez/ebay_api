@@ -10,7 +10,7 @@ RSpec.describe EbayAPI, ".sell.marketing.campaign.create" do
       "campaignName" => "eBay Mag GB",
       fundingStrategy: {
           "bidPercentage" => "5.0",
-          "fundingModel"  => "COST_PER_SALE",
+          "fundingModel"  => "COST_PER_SALE"
       },
       "marketplaceId": "EBAY_GB",
       startDate: Time.now.iso8601
@@ -38,7 +38,7 @@ RSpec.describe EbayAPI, ".sell.marketing.campaign.create" do
 
     it do
       expect { subject }.to raise_error(EbayAPI::Error) do |ex|
-        expect(ex.code).to eq 35051
+        expect(ex.code).to eq 35_051
         expect(ex.message).to match /'marketplaceId' EBAY_FR is not supported\./
       end
     end
@@ -51,7 +51,7 @@ RSpec.describe EbayAPI, ".sell.marketing.campaign.create" do
 
     it "raises exception to application to urge user to visit URL" do
       expect { subject }.to raise_error(EbayAPI::UserActionRequired) do |error|
-        expect(error.code).to eq 35067
+        expect(error.code).to eq 35_067
         expect(error.url).to eq "http://www.ebay.co.uk/pl/agreement"
       end
     end
@@ -64,7 +64,7 @@ RSpec.describe EbayAPI, ".sell.marketing.campaign.create" do
 
     it do
       expect { subject }.to raise_error(EbayAPI::Error) do |ex|
-        expect(ex.code).to eq 35051
+        expect(ex.code).to eq 35_051
         expect(ex.message).to match /'marketplaceId' EBAY_FR is not supported\./
       end
     end
