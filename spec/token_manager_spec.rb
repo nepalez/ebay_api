@@ -4,14 +4,16 @@ require "spec_helper"
 require "ebay_api/token_manager"
 
 describe EbayAPI::TokenManager do
-  let(:refresh_response) { '{"access_token":"new_token","expires_in":7200}' }
+  let(:refresh_response) do
+    { status: 200, body: '{"access_token":"new_token","expires_in":7200}' }
+  end
   let!(:api) do
     stub_request(:post, "https://api.sandbox.ebay.com/identity/v1/oauth2/token")
         .with(
             body: { grant_type: "refresh_token", refresh_token: "refreshing" },
             basic_auth: %w[1 2]
         )
-        .to_return(status: 200, body: refresh_response)
+        .to_return(refresh_response)
   end
 
   let(:access_token)   { "old_token" }
@@ -101,13 +103,30 @@ describe EbayAPI::TokenManager do
 
     context "with revoked refresh token" do
       let(:refresh_response) do
-        '{"error":"invalid_grant","error_description":"this is fiasco"}'
+        {
+          status: 400,
+          body: '{"error":"invalid_grant","error_description":"fiasco"}',
+        }
       end
 
       it "raises exception" do
         expect { subject.refresh! }.to raise_error(
-          EbayAPI::TokenManager::RefreshTokenInvalid, "this is fiasco"
+          EbayAPI::TokenManager::RefreshTokenInvalid, "fiasco"
         )
+      end
+    end
+
+    context "on eBay's internal server error" do
+      let(:refresh_response) do
+        {
+          status: 500,
+          body: '{"error":"server_error","error_description":"this is fiasco"}',
+        }
+      end
+
+      it "raises exception" do
+        expect { subject.refresh! }.to raise_error \
+          EbayAPI::InternalServerError, /this is fiasco/
       end
     end
   end

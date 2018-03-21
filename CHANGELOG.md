@@ -7,3 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [0.0.1] - To be released
 
 This is a first public release.
+
+### Added
+
+ - Handling of `500 Internal Server Errors` responses

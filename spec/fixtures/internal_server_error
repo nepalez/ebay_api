@@ -1,0 +1,5 @@
+HTTP/1.1 500 Internal Server Error
+Content-Length: 230
+Content-Type: application/json
+
+{"errors":[{"errorId":2003,"domain":"API_MARKETING","category":"APPLICATION","message":"Internal error","longMessage":"There was a problem with an eBay internal system or process. Contact eBay developer support for assistance."}]}

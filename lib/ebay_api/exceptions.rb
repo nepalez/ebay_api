@@ -11,6 +11,9 @@ class EbayAPI
   class InvalidAccessToken < Error; end
   class AlreadyExists < Error; end
 
+  # HTTP 500 from eBay. May be retried in most cases.
+  class InternalServerError < Error; end
+
   class UserActionRequired < Error
     attr_reader :url
 

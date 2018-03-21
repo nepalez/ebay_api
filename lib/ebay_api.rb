@@ -61,6 +61,7 @@ class EbayAPI < Evil::Client
 
   response(200) { |_, _, (data, *)| data }
 
+  # https://developer.ebay.com/api-docs/static/handling-error-messages.html
   response(400, 401, 409) do |_, _, (data, *)|
     case (code = data.dig("errors", 0, "errorId"))
     when 1001
@@ -69,5 +70,12 @@ class EbayAPI < Evil::Client
     else
       raise Error.new(code: code), data.dig("errors", 0, "message")
     end
+  end
+
+  response(500) do |_, _, (data, *)|
+    code = data.dig("errors", 0, "errorId")
+    message =
+        data.dig("errors", 0, "longMessage") || data.dig("errors", 0, "message")
+    raise InternalServerError.new(code: code), message
   end
 end

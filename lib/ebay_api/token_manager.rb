@@ -4,6 +4,7 @@ require_relative "../ebay_api"
 
 # Holds access token from OAuth method for using with all eBay APIs
 # Retrieves new access token every time when current become outdated.
+# @see https://developer.ebay.com/api-docs/static/oauth-qref-auth-code-grant.html
 class EbayAPI::TokenManager
   extend Dry::Initializer
 
@@ -48,7 +49,6 @@ class EbayAPI::TokenManager
     raise RefreshTokenExpired if refresh_token_expires_at&.<= now
 
     data = refresh_token_request!
-    raise(RefreshTokenInvalid, data["error_description"]) if data.key?("error")
 
     @access_token = data["access_token"]
     @access_token_expires_at = (now + data["expires_in"])
@@ -59,12 +59,26 @@ class EbayAPI::TokenManager
   private
 
   def refresh_token_request!
-    response = request!(
-        token_endpoint,
-        grant_type: "refresh_token", refresh_token: refresh_token
-    )
-    return JSON.parse(response.body) if %w[200 400].include?(response.code)
+    response =
+      request! token_endpoint,
+               grant_type: "refresh_token", refresh_token: refresh_token
+    body = JSON.parse(response.body)
+    return body if response.is_a? Net::HTTPSuccess
+    handle_errors!(body)
+  rescue JSON::ParserError
     raise EbayAPI::Error, "Can't refresh access token: #{response.body}"
+  end
+
+  def handle_errors!(response)
+    message = response["error_description"]
+    case response["error"]
+    when "server_error"
+      raise EbayAPI::InternalServerError, message
+    when "invalid_grant"
+      raise RefreshTokenInvalid, message
+    else
+      raise EbayAPI::Error, "Can't refresh access token: #{message}"
+    end
   end
 
   def token_endpoint
