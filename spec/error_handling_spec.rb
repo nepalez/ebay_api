@@ -23,10 +23,23 @@ RSpec.describe EbayAPI, "error handling" do
       open_fixture_file "internal_server_error"
     end
 
-    it "retrieves all pages lazily" do
+    it do
       expect { subject }.to raise_error(EbayAPI::InternalServerError) do |ex|
         expect(ex.code).to eq 2003
         expect(ex.message).to match /There was a problem with an eBay/
+      end
+    end
+  end
+
+  context "when daily request limit is reached" do
+    let(:response) do
+      open_fixture_file "too_many_requests"
+    end
+
+    it do
+      expect { subject }.to raise_error(EbayAPI::RequestLimitExceeded) do |ex|
+        expect(ex.code).to eq 2001
+        expect(ex.message).to match /The request limit has been reached/
       end
     end
   end

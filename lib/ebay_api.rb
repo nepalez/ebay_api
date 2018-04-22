@@ -74,6 +74,14 @@ class EbayAPI < Evil::Client
     end
   end
 
+  # https://go.developer.ebay.com/api-call-limits
+  response(429) do |_, _, (data, *)|
+    error = data.dig("errors", 0) || {}
+    code = error["errorId"]
+    message = error["longMessage"] || error["message"]
+    raise RequestLimitExceeded.new(code: code), message
+  end
+
   response(500) do |_, _, (data, *)|
     code = data.dig("errors", 0, "errorId")
     message =

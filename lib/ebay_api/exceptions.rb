@@ -14,6 +14,12 @@ class EbayAPI
   # HTTP 500 from eBay. May be retried in most cases.
   class InternalServerError < Error; end
 
+  # HTTP 429 from eBay. Indicates that daily API call limit has been reached.
+  #
+  # Call limits are individual for every API,
+  # see https://go.developer.ebay.com/api-call-limits
+  class RequestLimitExceeded < Error; end
+
   class UserActionRequired < Error
     attr_reader :url
 
