@@ -1,0 +1,6 @@
+HTTP/1.1 200 OK
+Content-Length: 109
+Content-Type: application/json
+
+{"sellingLimit":{"amount":{"value":"500","currency":"USD"},"quantity":10},"sellerRegistrationCompleted":true}
+
