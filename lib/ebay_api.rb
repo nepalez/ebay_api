@@ -28,11 +28,12 @@ class EbayAPI < Evil::Client
   require_relative "ebay_api/exceptions"
 
   option :token
-  option :site,     Site,            optional: true
-  option :language, Language,        optional: true
-  option :charset,  Charset,         default:  proc { "utf-8" }
-  option :sandbox,  true.method(:&), default:  proc { false }
-  option :gzip,     true.method(:&), default:  proc { false }
+  option :site,       Site,            optional: true
+  option :language,   Language,        optional: true
+  option :charset,    Charset,         default:  proc { "utf-8" }
+  option :sandbox,    true.method(:&), default:  proc { false }
+  option :gzip,       true.method(:&), default:  proc { false }
+  option :user_agent, method(:String), optional: true
 
   validate do
     next unless language && site
@@ -54,9 +55,10 @@ class EbayAPI < Evil::Client
     {
       "Accept-Language":  language,
       "Accept-Charset":   charset,
+      "User-Agent":       user_agent,
       "X-Ruby-Client":    "https://github.com/nepalez/ebay_api",
       "X-Ruby-Framework": "https://github.com/evilmartians/evil-client"
-    }
+    }.compact
   end
 
   response(200) { |_, _, (data, *)| data }
