@@ -2,7 +2,7 @@ class EbayAPI
   scope :sell do
     scope :account do
       scope :fulfillment_policies do
-        operation :get do
+        operation :list do
           option :marketplace_id
           http_method :get
           query do

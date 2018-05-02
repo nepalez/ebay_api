@@ -8,8 +8,7 @@ class EbayAPI
 
           http_method :get
           query do
-            { inventoryItemGroupKey: inventory_item_group_key }
-              .select { |_, v| v }
+            { inventoryItemGroupKey: inventory_item_group_key }.compact
           end
           response(404) { nil }
         end

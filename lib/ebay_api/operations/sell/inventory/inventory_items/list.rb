@@ -11,7 +11,7 @@ class EbayAPI
           http_method :get
 
           query do
-            { limit: limit, offset: offset }.select { |_, v| v }
+            { limit: limit, offset: offset }.compact
           end
 
           middleware { PaginatedCollection::MiddlewareBuilder.call }

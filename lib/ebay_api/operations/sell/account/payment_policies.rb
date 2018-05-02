@@ -1,6 +1,6 @@
 require_relative "payment_policies/create"
 require_relative "payment_policies/delete"
-require_relative "payment_policies/get"
+require_relative "payment_policies/list"
 
 class EbayAPI
   scope :sell do

@@ -9,7 +9,7 @@ class EbayAPI
 
           http_method :get
           query do
-            { sku: sku, limit: limit, offset: offset }.select { |_, v| v }
+            { sku: sku, limit: limit, offset: offset }.compact
           end
           response(404) { nil }
         end
