@@ -4,8 +4,8 @@ class EbayAPI
       scope :offers do
         operation :create do
           option :content_language
-          http_method :post
           option :data
+          http_method :post
           headers { { "Content-Language" => content_language } }
           body do
             data
