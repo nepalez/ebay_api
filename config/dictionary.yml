@@ -1016,6 +1016,9 @@
   - NONE
   - PRE_CHECKOUT
   - DURING_CHECKOUT
+:program_type: # https://developer.ebay.com/api-docs/sell/account/types/api:ProgramTypeEnum
+  - OUT_OF_STOCK_CONTROL
+  - SELLING_POLICY_MANAGEMENT
 :refund_status: # https://developer.ebay.com/api-docs/sell/fulfillment/types/sel:RefundStatusEnum
   - code:       FAILED
     requested:  true
