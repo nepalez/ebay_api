@@ -1,0 +1,6 @@
+HTTP/1.1 201 Created
+Content-Length: 561
+Content-Type: application/json
+
+{"name":"30-day domestic and international return policy","description":"Policy specifies an international return policy in addition to the domestic return policy.","marketplaceId":"EBAY_US","categoryTypes":[{"name":"ALL_EXCLUDING_MOTORS_VEHICLES","default":false}],"returnsAccepted":true,"returnPeriod":{"value":30,"unit":"DAY"},"refundMethod":"MONEY_BACK","returnShippingCostPayer":"SELLER","internationalOverride":{"returnsAccepted":true,"returnPeriod":{"value":30,"unit":"DAY"},"returnShippingCostPayer":"BUYER"},"returnPolicyId":"5790479000","warnings":[]}
+
