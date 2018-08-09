@@ -8,6 +8,7 @@ class EbayAPI
 
       require_relative "account/privilege"
       require_relative "account/program"
+      require_relative "account/fulfillment_policy"
     end
   end
 end
