@@ -1,0 +1,20 @@
+---
+name: 30-day domestic and international return policy
+marketplaceId: EBAY_US
+categoryTypes:
+- name: ALL_EXCLUDING_MOTORS_VEHICLES
+  default: 'true'
+description: Policy specifies an international return policy in addition to the domestic return policy.
+refundMethod: MONEY_BACK
+returnsAccepted: true
+returnMethod: EXCHANGE
+returnPeriod:
+  value: 30
+  unit: DAY
+returnShippingCostPayer: SELLER
+internationalOverride:
+  returnsAccepted: true
+  returnPeriod:
+    unit: DAY
+    value: 60
+  returnShippingCostPayer: BUYER

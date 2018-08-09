@@ -1,0 +1,13 @@
+---
+name: minimal return policy, US marketplace
+marketplaceId: EBAY_US
+categoryTypes:
+- name: ALL_EXCLUDING_MOTORS_VEHICLES
+  default: false
+returnsAccepted: true
+returnPeriod:
+  value: 30
+  unit: DAY
+refundMethod: MONEY_BACK
+returnShippingCostPayer: SELLER
+returnPolicyId: '5792219000'
