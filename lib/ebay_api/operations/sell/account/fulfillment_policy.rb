@@ -10,3 +10,4 @@ end
 
 require_relative "fulfillment_policy/delete"
 require_relative "fulfillment_policy/get"
+require_relative "fulfillment_policy/get_by_name"
