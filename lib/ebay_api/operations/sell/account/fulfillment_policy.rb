@@ -9,3 +9,4 @@ class EbayAPI
 end
 
 require_relative "fulfillment_policy/delete"
+require_relative "fulfillment_policy/get"
