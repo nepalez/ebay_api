@@ -1,0 +1,34 @@
+---
+categoryTypes:
+  - name: ALL_EXCLUDING_MOTORS_VEHICLES
+marketplaceId: EBAY_US
+name: "Worldwide shipping options: Free domestic, CALCULATED int'l"
+globalShipping: false
+handlingTime:
+  unit: DAY
+  value: 1
+shippingOptions:
+  - costType: FLAT_RATE
+    optionType: DOMESTIC
+    shippingServices:
+      - buyerResponsibleForShipping: false
+        freeShipping: true
+        shippingCarrierCode: USPS
+        shippingServiceCode: USPSPriorityFlatRateBox
+        shippingCost:
+          currency: USD
+          value: 0.0
+  - costType: CALCULATED
+    optionType: INTERNATIONAL
+    insuranceOffered: true
+    insuranceFee:
+      value: 10.0
+      currency: USD
+    shippingServices:
+      - buyerResponsibleForShipping: true
+        freeShipping: false
+        shippingCarrierCode: USPS
+        shippingServiceCode: USPSPriorityMailInternational
+        shipToLocations:
+          regionIncluded:
+            - regionName: Worldwide
