@@ -1,0 +1,87 @@
+---
+total: 2
+fulfillmentPolicies:
+- name: Domestic free shipping
+  marketplaceId: EBAY_US
+  categoryTypes:
+  - name: ALL_EXCLUDING_MOTORS_VEHICLES
+    default: false
+  handlingTime:
+    value: 1
+    unit: DAY
+  shippingOptions:
+  - optionType: DOMESTIC
+    costType: FLAT_RATE
+    shippingServices:
+    - sortOrder: 1
+      shippingCarrierCode: USPS
+      shippingServiceCode: USPSPriorityFlatRateBox
+      shippingCost:
+        value: 0.0
+        currency: USD
+      additionalShippingCost:
+        value: 0.0
+        currency: USD
+      freeShipping: true
+      buyerResponsibleForShipping: false
+      buyerResponsibleForPickup: false
+    insuranceOffered: false
+    insuranceFee:
+      value: 0.0
+      currency: USD
+  globalShipping: false
+  pickupDropOff: false
+  freightShipping: false
+  fulfillmentPolicyId: '5733588000'
+- name: 'Worldwide shipping options: Free domestic, CALCULATED int''l'
+  marketplaceId: EBAY_US
+  categoryTypes:
+  - name: ALL_EXCLUDING_MOTORS_VEHICLES
+    default: false
+  handlingTime:
+    value: 1
+    unit: DAY
+  shipToLocations:
+    regionIncluded:
+    - regionName: Worldwide
+    regionExcluded: []
+  shippingOptions:
+  - optionType: DOMESTIC
+    costType: FLAT_RATE
+    shippingServices:
+    - sortOrder: 1
+      shippingCarrierCode: USPS
+      shippingServiceCode: USPSPriorityFlatRateBox
+      shippingCost:
+        value: 0.0
+        currency: USD
+      additionalShippingCost:
+        value: 0.0
+        currency: USD
+      freeShipping: true
+      buyerResponsibleForShipping: false
+      buyerResponsibleForPickup: false
+    insuranceOffered: false
+    insuranceFee:
+      value: 0.0
+      currency: USD
+  - optionType: INTERNATIONAL
+    costType: CALCULATED
+    shippingServices:
+    - sortOrder: 1
+      shippingCarrierCode: USPS
+      shippingServiceCode: USPSPriorityMailInternational
+      freeShipping: false
+      shipToLocations:
+        regionIncluded:
+        - regionName: Worldwide
+      buyerResponsibleForShipping: true
+      buyerResponsibleForPickup: false
+    insuranceOffered: false
+    insuranceFee:
+      value: 0.0
+      currency: USD
+  globalShipping: false
+  pickupDropOff: false
+  freightShipping: false
+  fulfillmentPolicyId: '5733606000'

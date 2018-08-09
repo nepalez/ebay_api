@@ -1,0 +1,6 @@
+HTTP/1.1 201 Created
+Content-Length: 738
+Content-Type: application/json
+
+{"name":"Domestic free shipping","marketplaceId":"EBAY_US","categoryTypes":[{"name":"ALL_EXCLUDING_MOTORS_VEHICLES","default":false}],"handlingTime":{"value":1,"unit":"DAY"},"shippingOptions":[{"optionType":"DOMESTIC","costType":"FLAT_RATE","shippingServices":[{"sortOrder":1,"shippingCarrierCode":"USPS","shippingServiceCode":"USPSPriorityFlatRateBox","shippingCost":{"value":0.0,"currency":"USD"},"additionalShippingCost":{"value":0.0,"currency":"USD"},"freeShipping":true,"buyerResponsibleForShipping":false,"buyerResponsibleForPickup":false}],"insuranceOffered":false,"insuranceFee":{"value":0.0,"currency":"USD"}}],"globalShipping":false,"pickupDropOff":false,"freightShipping":false,"fulfillmentPolicyId":"5733588000","warnings":[]}
+

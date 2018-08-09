@@ -61,7 +61,9 @@ class EbayAPI < Evil::Client
     }.compact
   end
 
-  response(200) { |_, _, (data, *)| data }
+  response(200, 201) { |_, _, (data, *)| data }
+
+  response(204) { true }
 
   # https://developer.ebay.com/api-docs/static/handling-error-messages.html
   response(400, 401, 409) do |_, _, (data, *)|
