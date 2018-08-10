@@ -12,8 +12,12 @@ RSpec.describe EbayAPI, ".sell.account.return_policy.create" do
     yaml_fixture_file "sell/account/return_policy/create/request.yml"
   end
 
-  before  { stub_request(:post, url).to_return(response) }
-  subject { scope.create policy: payload }
+  let(:data) do
+    payload.reject { |key| key == "marketplaceId" }
+  end
+
+  before  { stub_request(:post, url).with(body: payload).to_return(response) }
+  subject { scope.create site: 0, data: data }
 
   context "success" do
     let(:response) do

@@ -1,8 +1,8 @@
 ---
+name: Domestic free shipping
+marketplaceId: EBAY_US
 categoryTypes:
   - name: ALL_EXCLUDING_MOTORS_VEHICLES
-marketplaceId: EBAY_US
-name: Domestic free shipping
 handlingTime:
   unit: DAY
   value: 1

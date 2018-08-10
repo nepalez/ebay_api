@@ -12,8 +12,10 @@ RSpec.describe EbayAPI, ".sell.account.return_policy.update" do
     yaml_fixture_file "sell/account/return_policy/update/request.yml"
   end
 
+  let(:data) { payload.reject { |k| k == "marketplaceId" } }
+
   before  { stub_request(:post, url).to_return(response) }
-  subject { scope.update id: "5733606000", policy: payload }
+  subject { scope.update id: "5733606000", data: data, site: 0 }
 
   context "success" do
     let(:response) do
@@ -26,7 +28,7 @@ RSpec.describe EbayAPI, ".sell.account.return_policy.update" do
 
     it "sends a request" do
       subject
-      expect(a_request(:post, url)).to have_been_made
+      expect(a_request(:post, url).with(body: payload)).to have_been_made
     end
 
     it "returns the policy" do

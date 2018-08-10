@@ -12,8 +12,12 @@ RSpec.describe EbayAPI, ".sell.account.fulfillment_policy.update" do
     yaml_fixture_file "sell/account/fulfillment_policy/update/request.yml"
   end
 
+  let(:data) do
+    payload.reject { |key| key == "marketplaceId" }
+  end
+
   before  { stub_request(:post, url).to_return(response) }
-  subject { scope.update id: "5733606000", policy: payload }
+  subject { scope.update id: "5733606000", site: 0, data: data }
 
   context "success" do
     let(:response) do
