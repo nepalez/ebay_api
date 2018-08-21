@@ -12,6 +12,9 @@ Metrics/LineLength:
     - http
     - https
   
+Layout/SpaceInLambdaLiteral:
+  Enabled: false
+
 Style/CaseEquality:
   Enabled: false
 
@@ -34,9 +37,6 @@ Style/PercentLiteralDelimiters:
   Enabled: false
 
 Style/RaiseArgs:
-  Enabled: false
-
-Style/SpaceInLambdaLiteral:
   Enabled: false
 
 Style/StringLiterals:
