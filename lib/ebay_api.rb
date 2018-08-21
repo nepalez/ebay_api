@@ -27,6 +27,10 @@ class EbayAPI < Evil::Client
   require_relative "ebay_api/middlewares"
   require_relative "ebay_api/exceptions"
 
+  class << self
+    attr_accessor :logger
+  end
+
   option :token
   option :site,       Site,            optional: true
   option :language,   Language,        optional: true
@@ -41,10 +45,10 @@ class EbayAPI < Evil::Client
     errors.add :wrong_language, language: language, site: site
   end
 
-  format   "json"
-  path     { "https://api#{".sandbox" if sandbox}.ebay.com/" }
+  format "json"
+  path   { "https://api#{".sandbox" if sandbox}.ebay.com/" }
 
-  middleware JSONResponse
+  middleware { [LogRequest, JSONResponse] }
 
   security do
     token_value = token.respond_to?(:call) ? token.call : token
