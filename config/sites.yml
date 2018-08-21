@@ -43,7 +43,7 @@
   :country: BE
   :currencies: [EUR]
   :host: www.ebay.be
-  :key: EBAY_BE_FR
+  :key: EBAY_BE
   :languages: [fr-BE]
 - :id: 71
   :code: EBAY-FR
@@ -78,7 +78,7 @@
   :country: BE
   :currencies: [EUR]
   :host: www.ebay.be
-  :key: EBAY_BE_NL
+  :key: EBAY_BE
   :languages: [nl-BE]
 - :id: 146
   :code: EBAY-NL
@@ -148,7 +148,7 @@
   :country: CA
   :currencies: [USD, CAD]
   :host: www.cafr.ebay.ca
-  :key: EBAY_CA_FR
+  :key: EBAY_CA
   :languages: [fr-CA]
 - :id: 211
   :code: EBAY-PH

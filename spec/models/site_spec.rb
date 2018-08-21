@@ -25,7 +25,7 @@ RSpec.describe EbayAPI::Site do
       let(:id) { "EBAY_CA" }
 
       it "return a proper site" do
-        expect(subject.options).to eq options.merge(id: 2, languages: %w[en-CA])
+        expect(subject.options).to eq options.merge(languages: %w[en-CA fr-CA])
       end
     end
 
