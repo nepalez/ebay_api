@@ -9,7 +9,7 @@ class EbayAPI
           option :data, proc(&:to_h) # TODO: add model to validate input
 
           path { id }
-          http_method :post
+          http_method :put
           body { data.merge("marketplaceId" => site.key) }
         end
       end

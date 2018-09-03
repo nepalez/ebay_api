@@ -14,7 +14,7 @@ RSpec.describe EbayAPI, ".sell.account.return_policy.update" do
 
   let(:data) { payload.reject { |k| k == "marketplaceId" } }
 
-  before  { stub_request(:post, url).to_return(response) }
+  before  { stub_request(:put, url).to_return(response) }
   subject { scope.update id: "5733606000", data: data, site: 0 }
 
   context "success" do
@@ -28,7 +28,7 @@ RSpec.describe EbayAPI, ".sell.account.return_policy.update" do
 
     it "sends a request" do
       subject
-      expect(a_request(:post, url).with(body: payload)).to have_been_made
+      expect(a_request(:put, url).with(body: payload)).to have_been_made
     end
 
     it "returns the policy" do
