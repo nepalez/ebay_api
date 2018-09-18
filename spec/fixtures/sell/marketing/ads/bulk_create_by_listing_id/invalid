@@ -1,6 +1,6 @@
 HTTP/1.1 400 Bad Request
-Content-Length: 487
+Content-Length: 489
 Content-Type: application/json
 
-{"errors":[{"errorId":35007,"domain":"API_MARKETING","category":"REQUEST","message":"The 'bidPercentage' null is not valid. The bid percentage should be a single precision value. Minimum value: 1.0 , Maximum value:20.0. Example of valid values: 4.1, 4.10, 5.5, 5.0, etc. Invalid values: 4.44, 8.11, etc.","inputRefIds":["$.requests[0].bidPercentage"],"parameters":[{"name":"bidPercentage","value":"null"},{"name":"minBidPercent","value":"1.0"},{"name":"maxBidPercent","value":"20.0"}]}]}
+{"errors":[{"errorId":35007,"domain":"API_MARKETING","category":"REQUEST","message":"The 'bidPercentage' null is not valid. The bid percentage should be a single precision value. Minimum value: 1.0 , Maximum value:100.0. Example of valid values: 4.1, 4.10, 5.5, 5.0, etc. Invalid values: 4.44, 8.11, etc.","inputRefIds":["$.requests[0].bidPercentage"],"parameters":[{"name":"bidPercentage","value":"null"},{"name":"minBidPercent","value":"1.0"},{"name":"maxBidPercent","value":"100.0"}]}]}
 

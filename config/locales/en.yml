@@ -24,7 +24,7 @@ en:
           unsupported_marketplace: You can't use Promoted Listings at %{site}
         ebay_api/funding_strategy:
           bid_wrong_format: Promoted listing ad fee can only contain 1 fractional digit, you provided %(value)
-          bid_out_of_range: Promoted listing ad fee must be from 1% to 20%, you provided %(value)
+          bid_out_of_range: Promoted listing ad fee must be from 1% to 100%, you provided %(value)
           unsupported_funding_model: You can't use %(model) funding model, only COST_PER_SALE is allowed
       sites:
         'EBAY-AT':        'Austrian'

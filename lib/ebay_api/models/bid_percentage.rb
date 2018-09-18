@@ -6,7 +6,7 @@ class EbayAPI
       unless /\A\d{1,2}(?:\.\d)?\z/ =~ value.to_s
         next errors.add :bid_wrong_format, value: value
       end
-      unless (1..20).cover?(BigDecimal(value))
+      unless (1..100).cover?(BigDecimal(value))
         errors.add :bid_out_of_range, value: value
       end
     end
