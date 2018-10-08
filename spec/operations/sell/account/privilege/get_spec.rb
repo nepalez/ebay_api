@@ -25,4 +25,14 @@ RSpec.describe EbayAPI, ".sell.account.privilege.get" do
         )
     end
   end
+
+  context "bad request" do
+    let(:response) do
+      open_fixture_file "sell/account/privilege/get/bad_request"
+    end
+
+    it "raises an exception" do
+      expect { subject }.to raise_error EbayAPI::Error
+    end
+  end
 end
