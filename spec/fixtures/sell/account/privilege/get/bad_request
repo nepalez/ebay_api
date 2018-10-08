@@ -1,5 +1,6 @@
 HTTP/1.1 400 Bad Request
-Content-Length: 0
-Content-Type: application/json
+Content-Length: 182
+Content-Type: text/html
 
+{"errors":[{"errorId":1002,"domain":"OAuth","category":"REQUEST","message":"Missing access token","longMessage":"Access token is missing in the Authorization HTTP request header."}]}
 

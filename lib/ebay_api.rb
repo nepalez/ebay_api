@@ -77,12 +77,13 @@ class EbayAPI < Evil::Client
       message = data.dig("errors", 0, "longMessage")
       raise InvalidAccessToken.new(code: code), message
     else
-      raise Error.new(code: code), data.dig("errors", 0, "message")
+      raise Error.new(code: code, data: data), data.dig("errors", 0, "message")
     end
   end
 
   # https://go.developer.ebay.com/api-call-limits
   response(429) do |_, _, (data, *)|
+    data = data.to_h
     error = data.dig("errors", 0) || {}
     code = error["errorId"]
     message = error["longMessage"] || error["message"]
@@ -90,6 +91,7 @@ class EbayAPI < Evil::Client
   end
 
   response(500) do |_, _, (data, *)|
+    data = data.to_h
     code = data.dig("errors", 0, "errorId")
     message =
         data.dig("errors", 0, "longMessage") || data.dig("errors", 0, "message")

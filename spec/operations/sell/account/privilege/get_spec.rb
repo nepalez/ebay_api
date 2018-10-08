@@ -34,5 +34,24 @@ RSpec.describe EbayAPI, ".sell.account.privilege.get" do
     it "raises an exception" do
       expect { subject }.to raise_error EbayAPI::Error
     end
+
+    it "carries error message" do
+      begin
+        subject
+      rescue => err
+        expect(err.code).to eq 1002
+        expect(err.data).not_to be_empty
+      end
+    end
+  end
+
+  context "server error" do
+    let(:response) do
+      open_fixture_file "sell/account/privilege/get/server_error"
+    end
+
+    it "raises an exception" do
+      expect { subject }.to raise_error EbayAPI::Error
+    end
   end
 end
