@@ -66,18 +66,20 @@ class EbayAPI::TokenManager
     return body if response.is_a? Net::HTTPSuccess
     handle_errors!(body)
   rescue JSON::ParserError
-    raise EbayAPI::Error, "Can't refresh access token: #{response.body}"
+    message = "Response isn't JSON: #{response.code} - #{response.body}"
+    raise EbayAPI::Error, "Can't refresh access token: #{message}"
   end
 
   def handle_errors!(response)
-    message = response["error_description"]
+    cause = response.values_at("error", "error_description").compact.join(" - ")
+    cause = response if cause.length.zero?
     case response["error"]
     when "server_error"
-      raise EbayAPI::InternalServerError, message
+      raise EbayAPI::InternalServerError, cause
     when "invalid_grant"
-      raise RefreshTokenInvalid, message
+      raise RefreshTokenInvalid, cause
     else
-      raise EbayAPI::Error, "Can't refresh access token: #{message}"
+      raise EbayAPI::Error, "Can't refresh access token: #{cause}"
     end
   end
 

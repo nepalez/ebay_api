@@ -105,13 +105,13 @@ describe EbayAPI::TokenManager do
       let(:refresh_response) do
         {
           status: 400,
-          body: '{"error":"invalid_grant","error_description":"fiasco"}',
+          body: '{"error":"invalid_grant","error_description":"fiasco"}'
         }
       end
 
       it "raises exception" do
         expect { subject.refresh! }.to raise_error(
-          EbayAPI::TokenManager::RefreshTokenInvalid, "fiasco"
+          EbayAPI::TokenManager::RefreshTokenInvalid, "invalid_grant - fiasco"
         )
       end
     end
@@ -120,13 +120,24 @@ describe EbayAPI::TokenManager do
       let(:refresh_response) do
         {
           status: 500,
-          body: '{"error":"server_error","error_description":"this is fiasco"}',
+          body: '{"error":"server_error","error_description":"this is fiasco"}'
         }
       end
 
       it "raises exception" do
         expect { subject.refresh! }.to raise_error \
-          EbayAPI::InternalServerError, /this is fiasco/
+          EbayAPI::InternalServerError, /server_error - this is fiasco/
+      end
+    end
+
+    context "when server returns nonparseable result" do
+      let(:refresh_response) do
+        { status: 502, body: "<HTML><H1>Gateway timeout</H1></HTML>" }
+      end
+
+      it "raises exception" do
+        expect { subject.refresh! }.to raise_error \
+          EbayAPI::Error, /isn't JSON: 502 .*Gateway timeout/
       end
     end
   end
