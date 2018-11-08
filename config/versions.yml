@@ -14,3 +14,5 @@ sell:
   inventory: "1.1.0"
   marketing: "1.4.0"
   metadata: "1.1.0"
+developer:
+  analytics: "1_beta.0.0"
