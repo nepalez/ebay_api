@@ -1,3 +1,6 @@
+require_relative "analytics/rate_limit"
+require_relative "analytics/user_rate_limit"
+
 class EbayAPI
   scope :developer do
     #
@@ -7,9 +10,6 @@ class EbayAPI
     #
     scope :analytics do
       path { "analytics/v#{EbayAPI::DEVELOPER_ANALYTICS_VERSION[/^\d[\w]+/]}" }
-
-      require_relative "analytics/rate_limit"
-      require_relative "analytics/user_rate_limit"
     end
   end
 end

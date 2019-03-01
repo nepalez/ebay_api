@@ -1,3 +1,5 @@
+require_relative "developer/analytics"
+
 class EbayAPI
   #
   # eBay Developer APIs
@@ -6,7 +8,5 @@ class EbayAPI
   #
   scope :developer do
     path "developer"
-
-    require_relative "developer/analytics"
   end
 end
