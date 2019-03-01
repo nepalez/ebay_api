@@ -39,14 +39,14 @@ class EbayAPI::TokenManager
 
   # Returns access token (retrieves and returns new one if it has expired)
   def access_token
-    refresh! if access_token_expires_at&.<= Time.now + 60 # time drift margin
+    refresh! if Time.at(access_token_expires_at)&.<= Time.now + 60 # time drift margin
     @access_token
   end
 
   # Requests new access token, use +access_token+ to get its contents.
   def refresh!
     now = Time.now
-    raise RefreshTokenExpired if refresh_token_expires_at&.<= now
+    raise RefreshTokenExpired if Time.at(refresh_token_expires_at)&.<= now
 
     data = refresh_token_request!
 
