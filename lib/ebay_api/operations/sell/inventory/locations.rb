@@ -1,6 +1,7 @@
 require_relative "locations/create"
 require_relative "locations/delete"
 require_relative "locations/list"
+require_relative "locations/update"
 
 class EbayAPI
   scope :sell do
