@@ -3,6 +3,7 @@
 #
 
 require_relative "inventory/offers"
+require_relative "inventory/locations"
 
 class EbayAPI
   scope :sell do
