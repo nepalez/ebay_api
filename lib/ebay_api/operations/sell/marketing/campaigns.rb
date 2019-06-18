@@ -22,7 +22,7 @@ class EbayAPI
           code = data.dig("errors", 0, "errorId")
           message = data.dig("errors", 0, "message")
           case code
-          when 35_060
+          when 35_060, 35_067, 35_077
             raise EbayAPI::UserActionRequired.new(code: code), message
           else
             super!
