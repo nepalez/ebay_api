@@ -76,7 +76,7 @@ class EbayAPI::TokenManager
     case response["error"]
     when "server_error"
       raise EbayAPI::InternalServerError, cause
-    when "invalid_grant"
+    when "invalid_grant", "unauthorized_client"
       raise RefreshTokenInvalid, cause
     else
       raise EbayAPI::Error, "Can't refresh access token: #{cause}"

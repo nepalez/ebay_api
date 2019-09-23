@@ -116,6 +116,22 @@ describe EbayAPI::TokenManager do
       end
     end
 
+    context "with client not authorized" do
+      let(:refresh_response) do
+        {
+          status: 400,
+          body: '{"error":"unauthorized_client","error_description":"fiasco"}'
+        }
+      end
+
+      it "raises exception" do
+        expect { subject.refresh! }.to raise_error(
+          EbayAPI::TokenManager::RefreshTokenInvalid,
+          "unauthorized_client - fiasco"
+        )
+      end
+    end
+
     context "on eBay's internal server error" do
       let(:refresh_response) do
         {
