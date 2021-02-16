@@ -3,7 +3,8 @@ AllCops:
   DisplayCopNames:    true
   DisplayStyleGuide:  true
   StyleGuideCopsOnly: true
-  TargetRubyVersion:  2.3
+  TargetRubyVersion:  2.6
+  NewCops: enable
 
 Metrics/LineLength:
   AllowHeredoc: true
@@ -41,3 +42,10 @@ Style/RaiseArgs:
 
 Style/StringLiterals:
   EnforcedStyle: double_quotes
+
+Style/IfUnlessModifier:
+  Enabled: false
+
+Lint/ConstantDefinitionInBlock:
+  Exclude:
+    - spec/**/*

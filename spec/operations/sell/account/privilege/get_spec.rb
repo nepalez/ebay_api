@@ -36,12 +36,10 @@ RSpec.describe EbayAPI, ".sell.account.privilege.get" do
     end
 
     it "carries error message" do
-      begin
-        subject
-      rescue => err
-        expect(err.code).to eq 1002
-        expect(err.data).not_to be_empty
-      end
+      subject
+    rescue => err
+      expect(err.code).to eq 1002
+      expect(err.data).not_to be_empty
     end
   end
 

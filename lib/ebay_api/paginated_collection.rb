@@ -38,12 +38,12 @@ class EbayAPI
       @initial_next       = @next
     end
 
-    def each
-      return to_enum unless block_given?
+    def each(&block)
+      return to_enum unless block
       @collection = @initial_collection
       @next       = @initial_next
       loop do
-        @collection.each { |element| yield(element) }
+        @collection.each { |element| block.call(element) }
         raise StopIteration if all_records_loaded?
         load_next!
       end
