@@ -6,9 +6,9 @@ class EbayAPI
     # @see https://developer.ebay.com/api-docs/commerce/notification/overview.html
     #
     scope :notifications do
-      path { "notifications/v#{EbayAPI::COMMERCE_NOTIFICATIONS_VERSION[/^\d+/]}" }
+      path { "notification/v#{EbayAPI::COMMERCE_NOTIFICATIONS_VERSION[/^\d+/]}" }
 
-      require_relative "notifications/public_key"
+      require_relative "notification/public_key"
     end
   end
 end

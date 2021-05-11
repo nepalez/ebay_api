@@ -3,7 +3,7 @@ RSpec.describe EbayAPI, ".commerce.notifications.public_key.get" do
   let(:scope) { client.commerce.notifications.public_key }
   let(:settings) { yaml_fixture_file("settings.valid.yml") }
   let(:url) do
-    "https://api.ebay.com/commerce/notifications/v1/public_key/042"
+    "https://api.ebay.com/commerce/notification/v1/public_key/042"
   end
 
   before  { stub_request(:get, url).to_return(response) }
@@ -11,11 +11,11 @@ RSpec.describe EbayAPI, ".commerce.notifications.public_key.get" do
 
   context "success" do
     let(:response) do
-      open_fixture_file "commerce/notifications/public_key/get/success"
+      open_fixture_file "commerce/notification/public_key/get/success"
     end
 
     let(:public_key) do
-      yaml_fixture_file "commerce/notifications/public_key/get/success.yml"
+      yaml_fixture_file "commerce/notification/public_key/get/success.yml"
     end
 
     it "sends a request" do

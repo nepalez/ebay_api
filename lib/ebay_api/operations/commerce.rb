@@ -7,6 +7,6 @@ class EbayAPI
   scope :commerce do
     path "commerce"
 
-    require_relative "commerce/notifications"
+    require_relative "commerce/notification"
   end
 end
