@@ -11,10 +11,10 @@ class EbayAPI::TokenManager
   class RefreshTokenExpired < EbayAPI::Error; end
   class RefreshTokenInvalid < EbayAPI::Error; end
 
-  option :access_token
-  option :access_token_expires_at
-  option :refresh_token
-  option :refresh_token_expires_at
+  option :access_token,             optional: true
+  option :access_token_expires_at,  optional: true
+  option :refresh_token,            optional: true
+  option :refresh_token_expires_at, optional: true
   option :appid
   option :certid
   option :on_refresh,               optional: true
@@ -36,6 +36,15 @@ class EbayAPI::TokenManager
   #   @option options [#call]  on_refresh
   #     Callback. Will be called after successful renewal with two arguments:
   #     new access token and its expiration time
+
+  # Returns application access token
+  # https://apitut.com/ebay/api/oauth-application-token.html
+  def application_token
+    request_token!(
+      grant_type: "client_credentials",
+      scope: "https://api.ebay.com/oauth/api_scope"
+    )["access_token"]
+  end
 
   # Returns access token (retrieves and returns new one if it has expired)
   def access_token
@@ -59,9 +68,11 @@ class EbayAPI::TokenManager
   private
 
   def refresh_token_request!
-    response =
-      request! token_endpoint,
-               grant_type: "refresh_token", refresh_token: refresh_token
+    request_token!(grant_type: "refresh_token", refresh_token: refresh_token)
+  end
+
+  def request_token!(options)
+    response = request!(token_endpoint, **options)
     body = JSON.parse(response.body)
     return body if response.is_a? Net::HTTPSuccess
     handle_errors!(body)

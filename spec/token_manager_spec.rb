@@ -4,18 +4,6 @@ require "spec_helper"
 require "ebay_api/token_manager"
 
 describe EbayAPI::TokenManager do
-  let(:refresh_response) do
-    { status: 200, body: '{"access_token":"new_token","expires_in":7200}' }
-  end
-  let!(:api) do
-    stub_request(:post, "https://api.sandbox.ebay.com/identity/v1/oauth2/token")
-        .with(
-            body: { grant_type: "refresh_token", refresh_token: "refreshing" },
-            basic_auth: %w[1 2]
-        )
-        .to_return(refresh_response)
-  end
-
   let(:access_token)   { "old_token" }
   let(:refresh_token)  { "refreshing" }
   let(:access_expire)  { Time.now + 120 }
@@ -31,12 +19,43 @@ describe EbayAPI::TokenManager do
     )
   end
 
+  let(:refresh_response) do
+    { status: 200, body: '{"access_token":"new_token","expires_in":7200}' }
+  end
+  let!(:api) do
+    stub_request(:post, "https://api.sandbox.ebay.com/identity/v1/oauth2/token")
+      .with(
+        body: { grant_type: "refresh_token", refresh_token: "refreshing" },
+        basic_auth: %w[1 2]
+      )
+      .to_return(refresh_response)
+  end
+
   before do
     Timecop.freeze
     allow(callback).to receive(:call).with("new_token", Time.now + 7200)
   end
 
   after { Timecop.return }
+
+  describe "#application_token" do
+    let!(:api) do
+      stub_request(:post, "https://api.sandbox.ebay.com/identity/v1/oauth2/token")
+        .with(
+          body: {
+            grant_type: "client_credentials",
+            scope: "https://api.ebay.com/oauth/api_scope"
+          },
+          basic_auth: %w[1 2]
+        )
+        .to_return(refresh_response)
+    end
+
+    it "returns application token" do
+      expect(subject.application_token).to eq("new_token")
+      expect(api).to have_been_requested
+    end
+  end
 
   describe "#access_token" do
     context "with valid access_token" do

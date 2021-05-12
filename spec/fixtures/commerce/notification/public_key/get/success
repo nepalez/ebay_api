@@ -1,0 +1,5 @@
+HTTP/1.1 200 OK
+Content-Length: 220
+Content-Type: application/json
+
+{"algorithm":"ECDSA","digest":"SHA1","key":"-----BEGIN PUBLIC KEY-----MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEZhhxXKtR+TOvtDbgTPCkSof02qgBB7IsYOyf76ilExJ/upAa/vKIKheOoCyOpcLmi4t0b4uepb7LLjmMr90FUg==-----END PUBLIC KEY-----"}
