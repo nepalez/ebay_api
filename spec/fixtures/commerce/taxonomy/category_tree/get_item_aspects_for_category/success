@@ -1,0 +1,4 @@
+HTTP/1.1 200 OK
+Content-Length: 220
+Content-Type: application/json
+{"aspects": [{"aspectConstraint": {"aspectApplicableTo": ["AspectApplicableToEnum"], "aspectDataType": "AspectDataTypeEnum : [DATE,NUMBER,STRING,STRING_ARRAY]", "aspectEnabledForVariations": "boolean", "aspectFormat": "string", "aspectMaxLength": "integer", "aspectMode": "AspectModeEnum : [FREE_TEXT,SELECTION_ONLY]", "aspectRequired": "boolean", "aspectUsage": "AspectUsageEnum : [RECOMMENDED,OPTIONAL]", "expectedRequiredByDate": "string", "itemToAspectCardinality": "ItemToAspectCardinalityEnum : [MULTI,SINGLE]"}, "aspectValues": [{"localizedValue": "string", "valueConstraints": [{"applicableForLocalizedAspectName": "string", "applicableForLocalizedAspectValues": ["string"]}]}], "localizedAspectName": "string", "relevanceIndicator": {"searchCount": "integer"}}]}

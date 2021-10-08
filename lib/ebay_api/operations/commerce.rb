@@ -8,5 +8,6 @@ class EbayAPI
     path "commerce"
 
     require_relative "commerce/notification"
+    require_relative "commerce/taxonomy"
   end
 end

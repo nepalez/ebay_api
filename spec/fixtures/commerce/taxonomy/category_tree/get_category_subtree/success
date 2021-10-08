@@ -1,0 +1,4 @@
+HTTP/1.1 200 OK
+Content-Length: 220
+Content-Type: application/json
+{"categorySubtreeNode": {"category": {"categoryId": "string", "categoryName": "string"}, "categoryTreeNodeLevel": "integer", "childCategoryTreeNodes": [{"category": {"categoryId": "string", "categoryName": "string"}, "categoryTreeNodeLevel": "integer", "childCategoryTreeNodes": [{"category": {"categoryId": "string", "categoryName": "string"}, "categoryTreeNodeLevel": "integer", "childCategoryTreeNodes": [{}], "leafCategoryTreeNode": "boolean", "parentCategoryTreeNodeHref": "string"}], "leafCategoryTreeNode": "boolean", "parentCategoryTreeNodeHref": "string"}], "leafCategoryTreeNode": "boolean", "parentCategoryTreeNodeHref": "string"}, "categoryTreeId": "string", "categoryTreeVersion": "string"}
