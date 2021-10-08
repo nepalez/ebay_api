@@ -3,12 +3,12 @@ RSpec.describe EbayAPI, ".commerce.taxonomy.get_default_category_tree_id" do
   let(:scope) { client.commerce.taxonomy }
   let(:settings) { yaml_fixture_file("settings.valid.yml") }
   let(:url) do
-    "https://api.ebay.com/commerce/taxonomy/v1/get_default_category_tree_id?marketplace_id=EBAY_AT"
+    "https://api.ebay.com/commerce/taxonomy/v1/get_default_category_tree_id?marketplace_id=EBAY_US"
   end
 
   before  { stub_request(:get, url).to_return(response) }
   subject do
-    scope.get_default_category_tree_id marketplace_id: "EBAY_AT"
+    scope.get_default_category_tree_id site: 0
   end
 
   context "success" do
