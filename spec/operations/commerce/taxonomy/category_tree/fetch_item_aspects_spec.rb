@@ -13,7 +13,15 @@ RSpec.describe EbayAPI, ".commerce.taxonomy.category_tree.fetch_item_aspects" do
 
   context "success" do
     let(:response) do
-      open_fixture_file "commerce/taxonomy/category_tree/fetch_item_aspects/success"
+      body = StringIO.new
+      gzipper = Zlib::GzipWriter.new(body)
+      gzipper.write(read_fixture_file("commerce/taxonomy/category_tree/fetch_item_aspects/success.json"))
+      gzipper.close
+
+      {
+        status: 200,
+        body: body.string,
+      }
     end
 
     it "sends a request" do
