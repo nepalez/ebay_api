@@ -1,0 +1,5 @@
+HTTP/1.1 200 OK
+Content-Length: 367
+Content-Type: application/json
+
+{"categorySuggestions": [{"category": {"categoryId": "string", "categoryName": "string"}, "categoryTreeNodeAncestors": [{"categoryId": "string", "categoryName": "string", "categorySubtreeNodeHref": "string", "categoryTreeNodeLevel": "integer"}], "categoryTreeNodeLevel": "integer", "relevancy": "string"}], "categoryTreeId": "string", "categoryTreeVersion": "string"}

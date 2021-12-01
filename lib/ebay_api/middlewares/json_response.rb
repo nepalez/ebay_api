@@ -7,7 +7,17 @@ class EbayAPI
 
     def call(env)
       status, headers, body = @app.call(env)
-      [status, headers, body.map { |b| JSON.parse(b) unless b&.empty? }]
+
+      [status, headers, body.map { |b| parse(b) }]
+    end
+
+    private
+
+    def parse(body)
+      return unless body
+      return if body.empty?
+
+      JSON.parse(body)
     end
   end
 end

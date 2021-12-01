@@ -6,7 +6,7 @@ buy:
   marketing: "1_beta.0.0"
   order: "1_beta.7.0"
 commerce:
-  taxonomy: "1_beta.0.0"
+  taxonomy: "1.0.0"
   notifications: "1.0.0"
 sell:
   account: "1.1.0"

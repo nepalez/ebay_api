@@ -1,0 +1,5 @@
+HTTP/1.1 200 OK
+Content-Length: 751
+Content-Type: application/json
+
+{"applicableMarketplaceIds": ["MarketplaceIdEnum"], "categoryTreeId": "string", "categoryTreeVersion": "string", "rootCategoryNode": {"category": {"categoryId": "string", "categoryName": "string"}, "categoryTreeNodeLevel": "integer", "childCategoryTreeNodes": [{"category": {"categoryId": "string", "categoryName": "string"}, "categoryTreeNodeLevel": "integer", "childCategoryTreeNodes": [{"category": {"categoryId": "string", "categoryName": "string"}, "categoryTreeNodeLevel": "integer", "childCategoryTreeNodes": [{}], "leafCategoryTreeNode": "boolean", "parentCategoryTreeNodeHref": "string"}], "leafCategoryTreeNode": "boolean", "parentCategoryTreeNodeHref": "string"}], "leafCategoryTreeNode": "boolean", "parentCategoryTreeNodeHref": "string"}}
