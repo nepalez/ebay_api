@@ -10,6 +10,7 @@ class EbayAPI
       require_relative "account/program"
       require_relative "account/fulfillment_policy"
       require_relative "account/return_policy"
+      require_relative "account/payment_policy"
       require_relative "account/payments_program"
     end
   end
