@@ -20,7 +20,7 @@ class EbayAPI
       return if body.empty?
 
       file = File.new("/tmp/ebay-api-response-#{SecureRandom.hex}", "w+b")
-      file.write(body.to_s)
+      file.write(body)
       file.flush
       file.close
       { "filename" => file.path }.to_json
