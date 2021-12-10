@@ -72,12 +72,15 @@ class EbayAPI < Evil::Client
   # https://developer.ebay.com/api-docs/static/handling-error-messages.html
   response(400, 401, 409) do |_, _, (data, *)|
     data = data.to_h
-    case (code = data.dig("errors", 0, "errorId"))
+    error = data.dig("errors", 0) || {}
+    code = error["errorId"]
+    message = error["longMessage"] || error["message"]
+
+    case code
     when 1001
-      message = data.dig("errors", 0, "longMessage")
       raise InvalidAccessToken.new(code: code), message
     else
-      raise Error.new(code: code, data: data), data.dig("errors", 0, "message")
+      raise Error.new(code: code, data: data), message
     end
   end
 
