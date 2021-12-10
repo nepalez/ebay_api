@@ -1,0 +1,5 @@
+HTTP/1.1 200 OK
+Content-Length: 202
+Content-Type: application/json
+
+{"name":"Managed Payments","marketplaceId":"EBAY_US","categoryTypes":[{"name":"ALL_EXCLUDING_MOTORS_VEHICLES","default":false}],"paymentMethods":[],"immediatePay":false,"paymentPolicyId":"185091636024"}

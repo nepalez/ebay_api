@@ -1,0 +1,10 @@
+---
+name: Managed Payments
+marketplaceId: EBAY_US
+categoryTypes:
+- name: ALL_EXCLUDING_MOTORS_VEHICLES
+  default: false
+paymentMethods: []
+immediatePay: false
+paymentPolicyId: "184528067024"
+warnings: []
