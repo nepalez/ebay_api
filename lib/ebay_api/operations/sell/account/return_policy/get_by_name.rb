@@ -7,7 +7,7 @@ class EbayAPI
           option :site, Site
           option :name, proc(&:to_s)
 
-          path  { "/" }
+          path  { "/get_by_policy_name" }
           query { { marketplace_id: site.key, name: name } }
           http_method :get
         end

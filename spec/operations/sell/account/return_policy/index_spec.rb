@@ -9,7 +9,7 @@ RSpec.describe EbayAPI, ".sell.account.return_policy.index" do
   end
 
   before  { stub_request(:get, url).to_return(response) }
-  subject { scope.index id: "5733588000" }
+  subject { scope.index }
 
   context "success" do
     let(:response) do

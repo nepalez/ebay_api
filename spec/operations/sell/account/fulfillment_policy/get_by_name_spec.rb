@@ -4,7 +4,7 @@ RSpec.describe EbayAPI, ".sell.account.fulfillment_policy.get_by_name" do
   let(:settings) { yaml_fixture_file("settings.valid.yml") }
   let(:version)  { "1.2.0" }
   let(:url) do
-    "https://api.ebay.com/sell/account/v1/fulfillment_policy/" \
+    "https://api.ebay.com/sell/account/v1/fulfillment_policy/get_by_policy_name" \
       "?marketplace_id=EBAY_US&name=postcards"
   end
 
