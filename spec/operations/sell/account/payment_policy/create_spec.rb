@@ -1,5 +1,3 @@
-HashDiff = Hashdiff
-
 RSpec.describe EbayAPI, ".sell.account.payment_policy.create" do
   let(:client)   { described_class.new(settings) }
   let(:scope)    { client.sell.account(version: version).payment_policy }
