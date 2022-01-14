@@ -1,6 +1,6 @@
 Gem::Specification.new do |gem|
   gem.name     = "ebay_api"
-  gem.version  = "0.0.5"
+  gem.version  = "0.0.6"
   gem.author   = "Andrew Kozin (nepalez)"
   gem.email    = "andrew.kozin@gmail.com"
   gem.homepage = "https://github.com/nepalez/sms_aero"
@@ -21,6 +21,6 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency "rspec-its", "~> 1.2"
   gem.add_development_dependency "rubocop", "~> 0.49"
   gem.add_development_dependency "timecop", "~> 0.9"
-  gem.add_development_dependency "webmock", "~> 2.1"
+  gem.add_development_dependency "webmock", "~> 3.14"
   gem.add_development_dependency "httplog"
 end

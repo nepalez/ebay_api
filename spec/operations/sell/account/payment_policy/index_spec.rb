@@ -1,10 +1,10 @@
-RSpec.describe EbayAPI, ".sell.account.return_policy.index" do
+RSpec.describe EbayAPI, ".sell.account.payment_policy.index" do
   let(:client)   { described_class.new(settings) }
-  let(:scope)    { client.sell.account(version: version).return_policy }
+  let(:scope)    { client.sell.account(version: version).payment_policy }
   let(:settings) { yaml_fixture_file("settings.valid.yml") }
   let(:version)  { "1.2.0" }
   let(:url) do
-    "https://api.ebay.com/sell/account/v1/return_policy/" \
+    "https://api.ebay.com/sell/account/v1/payment_policy/" \
       "?marketplace_id=EBAY_US"
   end
 
@@ -13,11 +13,11 @@ RSpec.describe EbayAPI, ".sell.account.return_policy.index" do
 
   context "success" do
     let(:response) do
-      open_fixture_file "sell/account/return_policy/get/success"
+      open_fixture_file "sell/account/payment_policy/get/success"
     end
 
     let(:policy) do
-      yaml_fixture_file "sell/account/return_policy/get/success.yml"
+      yaml_fixture_file "sell/account/payment_policy/get/success.yml"
     end
 
     it "sends a request" do

@@ -1,0 +1,5 @@
+HTTP/1.1 200 OK
+Content-Length: 2010
+Content-Type: application/json
+
+{"total":3,"paymentPolicies":[{"name":"PayPal#1","description":"PayPal, userpaypal1@gmail.com","marketplaceId":"EBAY_US","categoryTypes":[{"name":"ALL_EXCLUDING_MOTORS_VEHICLES","default":true}],"paymentMethods":[{"paymentMethodType":"PAYPAL","recipientAccountReference":{"referenceType":"PAYPAL_EMAIL","referenceId":"userpaypal1@gmail.com"}}],"immediatePay":false,"paymentPolicyId":"103323093024"},{"name":"PayPal#2","description":"PayPal, userpaypal2@gmail.com","marketplaceId":"EBAY_US","categoryTypes":[{"name":"ALL_EXCLUDING_MOTORS_VEHICLES","default":false}],"paymentMethods":[{"paymentMethodType":"PAYPAL","recipientAccountReference":{"referenceType":"PAYPAL_EMAIL","referenceId":"userpaypal2@gmail.com"}}],"immediatePay":false,"paymentPolicyId":"117938331024"},{"name":"Managed Payments","marketplaceId":"EBAY_US","categoryTypes":[{"name":"ALL_EXCLUDING_MOTORS_VEHICLES","default":false}],"paymentMethods":[],"immediatePay":false,"paymentPolicyId":"185091636024"}]}
