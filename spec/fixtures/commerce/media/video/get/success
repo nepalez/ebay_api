@@ -1,0 +1,5 @@
+HTTP/1.1 200 OK
+Content-Length: 751
+Content-Type: application/json
+
+{"videoId": "92626cdc1820ab8eac2356d1ffffe6d0", "size": 3114374, "title": "Test video", "description": "Test video description", "status": "PENDING_UPLOAD", "expirationDate": "2023-08-12T08:41:03Z", "classification": [ "ITEM" ] }

@@ -1,7 +1,7 @@
 class EbayAPI
   scope :commerce do
     #
-    # eBay Commerce Notifications API
+    # eBay Taxonomy API
     #
     # @see https://developer.ebay.com/api-docs/commerce/taxonomy/overview.html
     #

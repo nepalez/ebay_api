@@ -32,12 +32,13 @@ class EbayAPI < Evil::Client
   end
 
   option :token
-  option :site,       Site,            optional: true
-  option :language,   Language,        optional: true
-  option :charset,    Charset,         default:  proc { "utf-8" }
-  option :sandbox,    true.method(:&), default:  proc { false }
-  option :gzip,       true.method(:&), default:  proc { false }
-  option :user_agent, method(:String), optional: true
+  option :site,          Site,            optional: true
+  option :language,      Language,        optional: true
+  option :api_subdomain,                  default: proc { "api" }
+  option :charset,       Charset,         default:  proc { "utf-8" }
+  option :sandbox,       true.method(:&), default:  proc { false }
+  option :gzip,          true.method(:&), default:  proc { false }
+  option :user_agent,    method(:String), optional: true
 
   validate do
     next unless language && site
@@ -46,9 +47,9 @@ class EbayAPI < Evil::Client
   end
 
   format "json"
-  path   { "https://api#{".sandbox" if sandbox}.ebay.com/" }
+  path   { "https://#{api_subdomain}#{".sandbox" if sandbox}.ebay.com/" }
 
-  middleware { [LogRequest, JSONResponse] }
+  middleware { [LogRequest, AddVideoIdToBody, ReplaceRequestHeaders, JSONResponse] }
 
   security do
     token_value = token.respond_to?(:call) ? token.call : token
@@ -70,7 +71,7 @@ class EbayAPI < Evil::Client
   response(204) { true }
 
   # https://developer.ebay.com/api-docs/static/handling-error-messages.html
-  response(400, 401, 409) do |_, _, (data, *)|
+  response(400, 401, 404, 409, 415) do |_, _, (data, *)|
     data = data.to_h
     error = data.dig("errors", 0) || {}
     code = error["errorId"]

@@ -9,5 +9,6 @@ class EbayAPI
 
     require_relative "commerce/notification"
     require_relative "commerce/taxonomy"
+    require_relative "commerce/media"
   end
 end

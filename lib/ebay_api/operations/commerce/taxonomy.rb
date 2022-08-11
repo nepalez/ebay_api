@@ -1,9 +1,9 @@
 class EbayAPI
   scope :commerce do
     #
-    # eBay Commerce Notifications API
+    # eBay Commerce Taxonomy API
     #
-    # @see https://developer.ebay.com/api-docs/commerce/notification/overview.html
+    # @see https://developer.ebay.com/api-docs/commerce/taxonomy/overview.html
     #
     scope :taxonomy do
       path { "taxonomy/v#{EbayAPI::COMMERCE_TAXONOMY_VERSION[/^\d+/]}" }
