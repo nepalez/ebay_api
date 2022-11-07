@@ -1,0 +1,5 @@
+HTTP/1.1 200 OK
+Content-Length: 232
+Content-Type: application/json
+
+{"total":1,"subscriptions":[{"marketplaceId":"EBAY_US","subscriptionId":"4********1","subscriptionLevel":"Featured","subscriptionType":"STORE_PLAN","term":{"value":12,"unit":"MONTH"},"limit":10,"continuation_token":"some_token"}]}
