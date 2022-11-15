@@ -37,10 +37,10 @@ RSpec.describe EbayAPI, ".sell.account.subscription.get" do
     end
 
     it "carries error message" do
-      subject
-    rescue => err
-      expect(err.code).to eq 1002
-      expect(err.data).not_to be_empty
+      expect { subject }.to raise_error EbayAPI::Error { |err|
+        expect(err.code).to eq 1002
+        expect(err.data).not_to be_empty
+      }
     end
   end
 
