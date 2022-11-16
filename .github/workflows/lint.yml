@@ -1,0 +1,23 @@
+name: Linters
+
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+    tags-ignore:
+      - 'v*'
+
+jobs:
+  rubocop:
+    name: "Rubocop"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.1'
+          bundler-cache: true
+      - name: Lint Ruby code with RuboCop
+        run: |
+          bundle exec rubocop
