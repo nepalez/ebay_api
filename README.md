@@ -1,4 +1,6 @@
-# [WIP] EbayAPI
+# EbayAPI
+
+> This gem is currently supported by the [ebaymag](https://ebaymag.com) team at [the corresponding fork](https://github.com/ebaymag/ebay_api). Please, send your issues and PR-s to that repository!
 
 Ruby client to eBay RESTful JSON API
 
